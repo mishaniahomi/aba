@@ -1,0 +1,234 @@
+#record {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 99999;
+    animation: glowing 1300ms infinite;
+  }
+
+  .button {
+
+    width: 100%;
+}
+  #cssmenu {
+    background: #333;
+    border-bottom: 4px solid #ff1b1b;
+    font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;
+    font-size: 13px;
+  }
+   #cssmenu {padding: 0; margin: 0; border: 0; width:100%}
+  #cssmenu ul, #cssmenu li {list-style: none; margin: 0; padding: 0;} 
+  #cssmenu ul {position: relative; z-index: 597; }
+  #cssmenu ul li { float: left; min-height: 1px; vertical-align: middle;}
+  #cssmenu ul li.hover,
+  #cssmenu ul li:hover {position: relative; z-index: 599; cursor: default;}
+  #cssmenu ul ul {visibility: hidden; position: absolute; top: 100%; left: 0; z-index: 598}
+  #cssmenu ul ul li {float: none;}
+  #cssmenu ul ul ul {top: 0; left: auto; right: -99.5%; }
+  #cssmenu ul li:hover > ul { visibility: visible;}
+  #cssmenu ul ul {bottom: 0; left: 0;}
+  #cssmenu ul ul {margin-top: 0; }
+  #cssmenu ul ul li {font-weight: normal;}
+  #cssmenu a { display: block; line-height: 1em; text-decoration: none; } 
+  #cssmenu > ul { *display: inline-block; }
+
+  #cssmenu:after, #cssmenu ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#cssmenu a {
+    background: #333;
+    color: #CBCBCB;
+    padding: 0 20px;
+}
+#cssmenu ul { text-transform: uppercase; }
+
+    #cssmenu ul ul {
+      border-top: 4px solid #ff1b1b;
+      text-transform: none;
+      min-width: 190px;
+}
+      #cssmenu ul ul a {
+        background: #ff1b1b;
+        color: #FFF;
+        border: 1px solid #e700007d;
+        border-top: 0 none;
+        line-height: 150%;
+        padding: 16px 20px;
+}
+      #cssmenu ul ul ul { border-top: 0 none; }
+
+      #cssmenu ul ul li { position: relative }
+
+#cssmenu > ul > li > a 
+{ 
+    line-height: 48px; 
+    font-family: 'Republica Minor';
+}
+
+#cssmenu ul ul li:first-child > a { border-top: 1px solid #e700007d; }
+        #cssmenu ul ul li:hover > a { background: #a40606; }
+
+        #cssmenu ul ul li:last-child > a {
+          border-radius: 0 0 3px 3px;
+          box-shadow: 0 1px 0 #ff1b1b;
+}
+        #cssmenu ul ul li:last-child:hover > a { border-radius: 0 0 0 3px; }
+
+        #cssmenu ul ul li.has-sub > a:after {
+          content: '+';
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          margin-top: -8px;
+}
+
+ #cssmenu ul li:hover > a, #cssmenu ul li.active > a {
+      background: #ff1b1b;
+      color: #FFF;
+}
+    #cssmenu ul li.has-sub > a:after {
+      content: '+';
+      margin-left: 5px;
+}
+    #cssmenu ul li.last ul {
+      left: auto;
+      right: 0;
+}
+      #cssmenu ul li.last ul ul {
+        left: auto;
+        right: 99.5%;
+}
+
+.wrapper{margin:10vh}
+
+
+.card{
+  border: none;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+ overflow:hidden;
+ border-radius:20px;
+ min-height:450px;
+   box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
+
+ @media (max-width: 768px) {
+  min-height:350px;
+}
+
+@media (max-width: 420px) {
+  min-height:300px;
+}
+
+ &.card-has-bg{
+ transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  background-size:120%;
+  background-repeat:no-repeat;
+  background-position: center center;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);}
+
+  &:hover {
+    transform: scale(0.98);
+     box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
+    background-size:130%;
+     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+
+    .card-img-overlay {
+      transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+      background: rgb(35,79,109);
+     background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, rgba(4,69,114,1) 100%);
+     }
+  }
+}
+ .card-footer{
+  background: none;
+   border-top: none;
+    .media{
+     img{
+       border:solid 3px rgba(255,255,255,0.3);
+     }
+   }
+ }
+ .card-meta{color:#26BD75}
+ .card-body{
+   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+ &:hover {
+   .card-body{
+     margin-top:30px;
+     transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+   }
+ cursor: pointer;
+ transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+ .card-img-overlay {
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+ background: rgb(35,79,109);
+background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69,95,113,1) 100%);
+}
+}
+@media (max-width: 767px){
+
+}
+.text-shadow {
+  font-size: 36px;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #ccc;
+}
+.text-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.p_maain{
+  font-family: 'Open Sans', sans-serif; /* выбрать красивый шрифт */
+  font-size: 24px; /* задать размер шрифта */
+  line-height: 1.6; /* задать высоту строки */
+  color: #333333; /* выбрать цвет текста */
+  margin: 10px 0; /* добавить отступы вокруг параграфа */
+  padding-bottom: 5px; /* добавить отступ внизу параграфа */
+  text-align: justify; /* выравнивание текста по ширине */
+
+}
+.nadpis{
+  font-family: 'Montserrat', sans-serif; /* выбрать красивый шрифт */
+
+  font-weight: bold; /* сделать шрифт жирным */
+  text-transform: uppercase; /* привести текст к верхнему регистру */
+  letter-spacing: 2px; /* добавить пробелы между буквами */
+  color: #1a1a1a; /* выбрать цвет текста */
+  text-align: center; /* выравнивание текста по центру */
+
+} 
+
+#title{
+    /* line-height: 48px;  */
+    font-family: 'Republica Minor';
+    font-weight: bold; 
+    font-size: 1.5rem; 
+}
+
+#machine{
+    display: None;
+}
+
+#search{
+    display: None;
+}

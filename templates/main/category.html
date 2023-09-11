@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}  {{ category.name }} {% endblock %}
+
+
+{% block content %}
+<div class="container">
+    {% for child in  child_categories %}
+        {{ child }}
+    {% endfor %}
+
+
+</div>
+{% endblock %}
