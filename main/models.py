@@ -6,8 +6,9 @@ from django.utils import timezone
 
 class Photo(models.Model):
     picture = models.ImageField(verbose_name='Фотография', upload_to='galery')
-    describe = models.TextField(verbose_name='Описание')
+    describe = models.TextField(verbose_name='Описание', null=True, blank=True)
     # albom_id = models.ForeignKey('Albom', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Альбом')
+
 
     class Meta:
         verbose_name = 'Фотографию'

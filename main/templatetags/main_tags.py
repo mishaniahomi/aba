@@ -1,9 +1,14 @@
 from django import template
 from itertools import islice
 
-from main.models import OurPartners, Post, banner_akcii, Categories
+from main.models import OurPartners, Post, banner_akcii, Categories, Photo
 
 register = template.Library()
+
+
+@register.simple_tag()
+def get_photo():
+    return Photo.objects.all()
 
 
 @register.simple_tag()
