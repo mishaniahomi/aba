@@ -1,5 +1,4 @@
 function show_form_search() {
-console.log('1111');
     console.log(document.getElementById('search').style.display);
     if(document.getElementById('search').style.display == 'block')
     document.getElementById('search').style.display = '';

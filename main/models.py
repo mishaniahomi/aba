@@ -4,11 +4,26 @@ from django.urls import reverse
 from django.utils import timezone
 
 
+class Albom(models.Model):
+    name = models.CharField(max_length=300, verbose_name='Название альбома')
+    date = models.DateField(verbose_name='Дата создания')
+    picture = models.ImageField(verbose_name='Обожка', upload_to='albom')
+    description = models.TextField(verbose_name='Описание')
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Альбом'
+        verbose_name_plural = 'Альбомы'
+        ordering = ['date']
+
+
 class Photo(models.Model):
     picture = models.ImageField(verbose_name='Фотография', upload_to='galery')
     describe = models.TextField(verbose_name='Описание', null=True, blank=True)
-    # albom_id = models.ForeignKey('Albom', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Альбом')
-
+    albom_id = models.ForeignKey('Albom', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Альбом')
 
     class Meta:
         verbose_name = 'Фотографию'

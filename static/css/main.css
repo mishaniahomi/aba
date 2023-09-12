@@ -232,3 +232,17 @@ background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69
 #search{
     display: None;
 }
+
+
+#slogan {
+    font-family: 'Republica Minor';
+    font-style: italic;
+}
+
+@media screen and (max-width:500px){
+#logo_image {
+
+width: 50%;
+
+
+}}

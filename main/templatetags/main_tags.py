@@ -1,14 +1,24 @@
 from django import template
 from itertools import islice
 
-from main.models import OurPartners, Post, banner_akcii, Categories, Photo
+from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom
 
 register = template.Library()
 
 
 @register.simple_tag()
-def get_photo():
-    return Photo.objects.all()
+def get_alboms():
+    alboms = Albom.objects.all()
+    grouped_alboms = []
+    while True:
+        group = list(islice(alboms, 4))
+        if len(group) == 0:
+            break
+        grouped_alboms.append(group)
+        alboms = alboms[4::]
+
+
+    return grouped_alboms
 
 
 @register.simple_tag()

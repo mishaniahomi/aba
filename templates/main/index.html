@@ -4,16 +4,10 @@
 {% block content %}
 {% get_ourpartners as ourpartners %}
 {% get_news as grouped_posts %}
-{% get_photo as photoes %}
+{% get_alboms as alboms_groups %}
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-<!--    <div class="carousel-indicators">-->
-<!--      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>-->
-<!--      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
-<!--      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
-<!--      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>-->
-<!--      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>-->
-<!--    </div>-->
+
     <div class="carousel-inner">
 {% get_banner_akcii as banner_akciies %}
 
@@ -126,6 +120,8 @@
 
   </div>
 </div>
+        </div>
+      </div>
 </div>
 <div class="text-center mt-3">
   <button class="btn btn-danger" onclick="prevSlide('#gallery')"> < </button>
@@ -142,7 +138,7 @@
   НОВОСТИ КОМПАНИИ
 </h3>
 
-
+<div class="container">
 <div id="news" class="carousel slide" data-ride="carousel">
   <div class="container">
     <div class="carousel-inner">
@@ -156,15 +152,20 @@
       
       <div class="row">
         {% for post in group %}
-        <div class="col" aria-live="left">
-          <div class="card">
-            <img src="{{ post.image.url }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">{{ post.created_at }}</p>
-                <h5 class="card-title">{{ post.title }}</h5>
-                <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
-            </div>
-          </div>
+          <div class="col-md-3">
+                <a href="{{ post.get_absolute_url }}">
+                  <div class="card">
+
+
+                        <img src="{{ post.image.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
+                                    <div class="card-caption card-body">
+                                        <p class="card-text">{{ post.created_at }}</p>
+                                        <h5 class="card-title">{{ albom.name }}</h5>
+
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
+                    </div>
+                  </div>
+                </a>
         </div>
       {% endfor %}
     </div>
@@ -178,8 +179,8 @@
 
   </div>
 
-  
-</div>
+    </div>
+
 <div class="text-center mt-3">
   <button class="btn btn-danger" onclick="prevSlide('#news')"> < </button>
   <button class="btn btn-danger" onclick="nextSlide('#news')"> > </button>
@@ -210,61 +211,60 @@
 <h3 class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">ГАЛЕРЕЯ</h3>
 
 <div class="container">
+
+    <div id="albom" class="carousel slide" data-ride="carousel">
+        <div class="container">
+            <div class="carousel-inner">
+
+                {% for group in alboms_groups %}
+                    {% if forloop.first %}
+                        <div class="carousel-item active">
+                    {% else %}
+                         <div class="carousel-item">
+                    {% endif %}
+                             <div class="row">
+                             {% for albom in group %}
+                                    <div class="col-md-3">
+                              <a href="{{ albom.slug }}">
+                                <div class="card">
+                                    <img src="{{ albom.picture.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
+                                    <div class="card-caption card-body">
+                                        <h5 class="card-title">{{ albom.name }}</h5>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                             {% endfor %}
+ </div>
+                         </div>
+                {% endfor %}
+                </div>
+
+        </div>
+    </div>
+
+
+
   <!-- Миниатюры -->
-  <div class="row">
-    {% for photo in photoes %}
-    <div class="col-md-3">
-      <div class="card">
 
-        <img src="{{ photo.picture.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
-        <div class="card-caption card-body">
-          <h5 class="card-title">
-            {{ photo.describe }}
-          </h5>
-
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-
-    </div>
-    <!-- Добавьте больше миниатюр здесь
+    <!-- Добавьте больше миниатюр здесь !-->
   </div>
+<div class="text-center mt-3">
+  <button class="btn btn-danger" onclick="prevSlide('#albom')"> < </button>
+  <button class="btn btn-danger" onclick="nextSlide('#albom')"> > </button>
+</div>
 
-  <!-- Модальное окно с увеличенными изображениями -->
-  <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <!-- Изображения для карусели -->
-            {% for photo in photoes %}
-               {% if forloop.first %}
-        <div class="carousel-item active">
-      {% else %}
-        <div class="carousel-item">
-      {% endif %}
-              <img src="{{ photo.picture.url }}" class="d-block w-100" alt="Large Image 1">
-            </div>
-            {% endfor %}
 
-            </div>
+<script>
+  // JavaScript функции для управления слайдером
+  function prevSlide(obj) {
+      $(obj).carousel('prev');
+  }
 
-            <!-- Добавьте больше увеличенных изображений здесь -->
-          </div>
-          <!-- Навигация -->
-          <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Предыдущее</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Далее</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  function nextSlide(obj) {
+      $(obj).carousel('next');
+  }
+</script>
   </div>
 
 
