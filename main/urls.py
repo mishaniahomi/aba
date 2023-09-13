@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, PostDetailView, zapchasti, servis, akcii, finansovye_instrumenty, categoryView
+from .views import index, PostDetailView, zapchasti, servis, akcii, finansovye_instrumenty, categoryView, AlbomDetail
 
 
 urlpatterns = [
@@ -10,5 +10,5 @@ urlpatterns = [
     path('category/<slug:slug>', categoryView, name='category'),
     path('finansovye_instrumenty', finansovye_instrumenty, name='finansovye_instrumenty'),
     path('', index, name='index'),
-
+    path('albom/<slug:slug>', AlbomDetail.as_view(), name='albomDetail')
 ] 

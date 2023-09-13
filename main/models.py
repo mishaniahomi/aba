@@ -19,6 +19,9 @@ class Albom(models.Model):
         verbose_name_plural = 'Альбомы'
         ordering = ['date']
 
+    def get_absolute_url(self):
+        return reverse('albomDetail', kwargs={'slug': self.slug})
+
 
 class Photo(models.Model):
     picture = models.ImageField(verbose_name='Фотография', upload_to='galery')
@@ -65,6 +68,7 @@ class Categories(models.Model):
 class Machine(models.Model):
     name = models.CharField(max_length=200, verbose_name='Название техники')
     main_image = models.ImageField(verbose_name='Главное изображение техники', upload_to='machine')
+    preview_description = RichTextUploadingField(verbose_name='Краткое описание техники')
     description = RichTextUploadingField(verbose_name='Описание техники')
     categories_id = models.ForeignKey('Categories', on_delete=models.CASCADE)
     slug = models.SlugField()

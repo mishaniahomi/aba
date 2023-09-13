@@ -1,10 +1,27 @@
 from django import template
 from itertools import islice
 
-from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom
+from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine
 
 register = template.Library()
 
+
+@register.simple_tag()
+def get_photoes(albom_id):
+    return Photo.objects.filter(albom_id=albom_id)
+
+@register.simple_tag()
+def get_machine(catgories_id):
+    machine = Machine.objects.filter(categories_id=catgories_id)
+    group_machine = []
+    while True:
+        group = list(islice(machine, 4))
+        if len(group) == 0:
+            break
+        group_machine.append(group)
+        machine = machine[3::]
+
+    return group_machine
 
 @register.simple_tag()
 def get_alboms():

@@ -225,7 +225,7 @@
                              <div class="row">
                              {% for albom in group %}
                                     <div class="col-md-3">
-                              <a href="{{ albom.slug }}">
+                              <a href="{{ albom.get_absolute_url }}">
                                 <div class="card">
                                     <img src="{{ albom.picture.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">

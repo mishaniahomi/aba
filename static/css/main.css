@@ -225,6 +225,13 @@ background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69
     font-size: 1.5rem; 
 }
 
+.categories {
+    /* line-height: 48px;  */
+    font-family: 'Republica Minor';
+    font-weight: bold;
+
+}
+
 #machine{
     display: None;
 }

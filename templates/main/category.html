@@ -1,11 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}  {{ category.name }} {% endblock %}
-
+{% load main_tags %}
 
 {% block content %}
 <div class="container">
+
+
     {% for child in  child_categories %}
-        {{ child }}
+
+    <h2 class="categories">{{ child }}</h2>
+    {% get_machine catgories_id=child as machinies %}
+    {% for group in  machinies %}
+    <div class="row">
+        {% for machine in group %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ machine.main_image.url }}" class="img-fluid">
+                      <div class="card-caption card-body">
+                          {% autoescape off %}
+                            {{ machine.preview_description }}
+                           {% endautoescape %}
+                      </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
     {% endfor %}
 
 

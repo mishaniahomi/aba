@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}  {{ object.name }} {% endblock %}
+{% load main_tags %}
+
+{% block content %}
+<div class="container">
+  {% get_photoes albom_id=object.id as photoes %}
+    {% for photo in photoes %}
+        {{ photo }}
+    {% endfor %}
+</div>
+{% endblock %}
