@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
 
-from .models import Post, Categories, Albom
-
+from .models import Post, Categories, Albom, Machine
 
 class PostDetailView(DetailView):
     model = Post
@@ -38,3 +37,7 @@ def categoryView(request, slug):
 
 class AlbomDetail(DetailView):
     model = Albom
+
+
+class MachineDetail(DetailView):
+    model = Machine

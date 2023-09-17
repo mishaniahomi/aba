@@ -80,8 +80,8 @@ class Machine(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse('category', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('machineDetail', kwargs={'slug': self.slug})
 
 
 class Post(models.Model):
