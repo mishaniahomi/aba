@@ -1,6 +1,6 @@
 from django import template
 from itertools import islice
-
+import math
 from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine
 
 register = template.Library()
@@ -40,7 +40,16 @@ def get_alboms():
 
 @register.simple_tag()
 def get_categories():
-    return Categories.objects.filter(parent=None)
+    categories = Categories.objects.filter(parent=None)
+    size = math.ceil(len(categories)/3)
+    grouped_categories = []
+    while True:
+        group = list(islice(categories, size))
+        if len(group) == 0:
+            break
+        grouped_categories.append(group)
+        categories = categories[size::]
+    return grouped_categories
 
 
 @register.simple_tag()

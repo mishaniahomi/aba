@@ -16,6 +16,7 @@
 
 
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
+      <link rel="stylesheet" href="{% static 'css/main2.css' %}">
     <title>{% block title %} {% endblock %}</title>
   </head>
 <body>
@@ -167,55 +168,66 @@
       </div>
 </div>
 
-<div id='cssmenu'>
-  <ul>
-     <li class='active'><a href="{% url 'index' %}">Главная</a></li>
-     <li><a href="{% url 'index' %}#news_title">Новости</a></li>
-     <li class='has-sub'><a  onclick="show_form()">Техника</a>
-     </li>
-     <li><a href="{% url 'zapchasti' %}">Запчасти</a></li>
-     <li><a href="{% url 'servis' %}">Сервис и ремонт</a></li>
-     <li><a href="{% url 'akcii' %}">Акции</a></li>
-     <li><a href="{% url 'finansovye_instrumenty' %}">Финансовый инструмент</a></li>
-     <li><a href="{% url 'index' %}#about">О компании</a></li>
-   
-     <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/images.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
-     <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/icon_odnoklassniki.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
-     <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/vk_icon.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
-  </ul>
+<nav class="navbar navbar-expand-xl navbar-dark" id="cssmenu2" >
+
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cssmenu" aria-controls="cssmenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+       <div class="collapse navbar-collapse" id="cssmenu">
+        <ul class="navbar-nav">
+             <li class='active'><a href="{% url 'index' %}">Главная</a></li>
+             <li><a href="{% url 'index' %}#news_title">Новости</a></li>
+             <li class='has-sub'><a href="{% url 'index' %}#machine" onclick="show_form()">Техника</a></li>
+             <li><a href="{% url 'zapchasti' %}">Запчасти</a></li>
+             <li><a href="{% url 'servis' %}">Сервис и ремонт</a></li>
+             <li><a href="{% url 'akcii' %}">Акции</a></li>
+             <li><a href="{% url 'finansovye_instrumenty' %}">Финансовый инструмент</a></li>
+
+             <li><a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О компании</a>
+                    <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item ptpt"  href="1">О нас</a>
+                        <a class="dropdown-item ptpt" href="2">Сертификаты и дипломы</a>
+                        <a class="dropdown-item ptpt" href="3">Наш буклет</a>
+                    </div>
+             </li>
+
+             <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/images.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
+             <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/icon_odnoklassniki.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
+             <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/vk_icon.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
+          </ul>
+           <div>
+</nav>
 
 
 
-
-</div>
 <div id="machine">
 <h3 class="pb-3 mb-12  font-italic border-bottom text-center text-shadow" >
   КАТАЛОГ ТЕХНИКИ
 </h3>
+
+
+
+
 {% get_categories as categories %}
 <div class="container">
 <div class="row">
-  <div class="col-4">
-    <ul class="list-group">
-        {% for categori in categories %}
+  {% for categori in categories %}
+    <div class="col-4">
 
-        <li class="list-group-item"><a class="link-danger" href="{{ categori.get_absolute_url }}"><img  src="{{ categori.icon.url }}" height="25px">{{ categori.name }}</a></li>
+      <ul class="list-group">
+        {% for object in categori %}
+
+        <li class="list-group-item"><a class="link-danger" href="{{ object.get_absolute_url }}"><img  src="{{ object.icon.url }}" height="25px">{{ object.name }}</a></li>
 
         {% endfor %}
 
 
     </ul>
-  </div>
-  <div class="col-4">
-    <ul class="list-group">
 
-    </ul>
   </div>
-  <div class="col-4">
-    <ul class="list-group">
+    {% endfor %}
 
-    </ul>
-  </div>
 </div>
 </div>
 </div>

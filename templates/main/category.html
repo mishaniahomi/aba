@@ -18,9 +18,9 @@
                     <a href="{{ machine.get_absolute_url }}" >
                     <img src="{{ machine.main_image.url }}" class="img-fluid">
                       <div class="card-caption card-body">
-                          {% autoescape off %}
-                            {{ machine.preview_description }}
-                           {% endautoescape %}
+
+                            {{ machine.name }}
+
                       </div>
                     </a>
                 </div>
