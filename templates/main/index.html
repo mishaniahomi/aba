@@ -21,10 +21,10 @@
 
               <a href="/#">
                 <img src="{{ banner_akcii.image.url }}" class="d-block w-100">
-                <div class="carousel-caption d-md-block text-box">
-                  <h3>{{ banner_akcii.title }} </h3>
-                  <p>{{ banner_akcii.short_description }}</p>
-                </div>
+                <div class=" d-md-block text-box" style="position: absolute; right: 0; bottom: 0;">
+    <h3>{{ banner_akcii.title }}</h3>
+    <p>{{ banner_akcii.short_description }}</p>
+</div>
               </a>
             </div>
         {% endfor %}
@@ -129,8 +129,68 @@
 </div>
 
 
+<h3 id="important_information_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">
+  ВАЖНАЯ ИНФОРМАЦИЯ
+</h3>
+<div class="container">
+<div id="important_information" class="carousel slide" data-ride="carousel">
+  <div class="container">
+    <div class="carousel-inner">
+
+      {% for group in grouped_posts %}
+      {% if forloop.first %}
+        <div class="carousel-item active">
+      {% else %}
+        <div class="carousel-item">
+      {% endif %}
+
+      <div class="row">
+        {% for post in group %}
+          <div class="col-md-3">
+                <a href="{{ post.get_absolute_url }}">
+                  <div class="card">
 
 
+                        <img src="{{ post.image.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
+                                    <div class="card-caption card-body">
+                                        <p class="card-text">{{ post.created_at }}</p>
+                                        <h5 class="card-title">{{ albom.name }}</h5>
+
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
+                    </div>
+                  </div>
+                </a>
+        </div>
+      {% endfor %}
+    </div>
+    </div>
+      {% endfor %}
+
+
+
+
+    </div>
+
+  </div>
+
+    </div>
+
+<div class="text-center mt-3">
+  <button class="btn btn-danger" onclick="prevSlide('#important_information')"> < </button>
+  <button class="btn btn-danger" onclick="nextSlide('#important_information')"> > </button>
+</div>
+
+
+<script>
+  // JavaScript функции для управления слайдером
+  function prevSlide(obj) {
+      $(obj).carousel('prev');
+  }
+
+  function nextSlide(obj) {
+      $(obj).carousel('next');
+  }
+</script>
 
 
 

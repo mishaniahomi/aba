@@ -192,6 +192,8 @@ background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69
   text-shadow: 2px 2px 0 #ccc;
 }
 .text-box {
+color: #fff;
+  text-align: center;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
@@ -265,7 +267,9 @@ background: #333;
     padding: 10px;
     border-radius: 0%;
 }
-
+.ptpt {
+margin-bottom: 10px;
+}
 .ptpt:hover {
 
     background-color: red; /* Замените на желаемый цвет фона */

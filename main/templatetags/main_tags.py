@@ -62,11 +62,11 @@ def get_ourpartners():
     ourpartners = OurPartners.objects.all()
     grouped_ourpartners = []
     while True:
-        group = list(islice(ourpartners, 3))
+        group = list(islice(ourpartners, 4))
         if len(group) == 0:
             break
         grouped_ourpartners.append(group)
-        ourpartners = ourpartners[3::]
+        ourpartners = ourpartners[4::]
     return grouped_ourpartners
 
 @register.simple_tag()
