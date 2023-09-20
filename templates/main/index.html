@@ -147,19 +147,19 @@
       <div class="row">
         {% for post in group %}
           <div class="col-md-3">
-                <a href="{{ post.get_absolute_url }}">
+
                   <div class="card">
 
 
-                        <img src="{{ post.image.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
+                        <img src="{{ post.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">
                                         <p class="card-text">{{ post.created_at }}</p>
-                                        <h5 class="card-title">{{ albom.name }}</h5>
+                                        <h5 class="card-title">{{ post.title }}</h5>
 
                         <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
                     </div>
                   </div>
-                </a>
+
         </div>
       {% endfor %}
     </div>
@@ -213,18 +213,17 @@
       <div class="row">
         {% for post in group %}
           <div class="col-md-3">
-                <a href="{{ post.get_absolute_url }}">
+
                   <div class="card">
+    <img src="{{ post.image.url }}" class="img-fluid  size-image" data-toggle="modal" data-target="#galleryModal">
+    <div class="card-caption card-body">
+        <p class="card-text">{{ post.created_at }}</p>
+        <h5 class="card-title">{{ post.title }}</h5>
+        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
+    </div>
+</div>
 
 
-                        <img src="{{ post.image.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
-                                    <div class="card-caption card-body">
-                                        <p class="card-text">{{ post.created_at }}</p>
-                                        <h5 class="card-title">{{ albom.name }}</h5>
-
-                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
-                    </div>
-                  </div>
                 </a>
         </div>
       {% endfor %}
@@ -233,12 +232,12 @@
       {% endfor %}
 
 
-       
+
               
     </div>
 
   </div>
-
+s
     </div>
 
 <div class="text-center mt-3">
@@ -287,7 +286,7 @@
                                     <div class="col-md-3">
                               <a href="{{ albom.get_absolute_url }}">
                                 <div class="card">
-                                    <img src="{{ albom.picture.url }}" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
+                                    <img src="{{ albom.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">
                                         <h5 class="card-title">{{ albom.name }}</h5>
                                     </div>

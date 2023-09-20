@@ -37,9 +37,9 @@ class Photo(models.Model):
 class banner_akcii(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название акции')
     image = models.ImageField(verbose_name='Главное изображение', upload_to='banner')
-    short_description = models.TextField(verbose_name='Краткое описание')
-    content = RichTextUploadingField(verbose_name='основной контент')
-    href = models.TextField(verbose_name="ссылка на акцию", blank=True, null=True)
+    short_description = models.TextField(verbose_name='Краткое описание', blank=True, null=True)
+    content = RichTextUploadingField(verbose_name='Основной контент', blank=True, null=True)
+    href = models.TextField(verbose_name="Ссылка на акцию", blank=True, null=True)
 
     class Meta:
         verbose_name = 'Банер'
@@ -68,8 +68,8 @@ class Categories(models.Model):
 class Machine(models.Model):
     name = models.CharField(max_length=200, verbose_name='Название техники')
     main_image = models.ImageField(verbose_name='Главное изображение техники', upload_to='machine')
-    preview_description = RichTextUploadingField(verbose_name='Краткое описание техники')
-    description = RichTextUploadingField(verbose_name='Описание техники')
+    preview_description = RichTextUploadingField(verbose_name='Краткое описание техники', blank=True, null=True)
+    description = RichTextUploadingField(verbose_name='Описание техники', blank=True, null=True)
     categories_id = models.ForeignKey('Categories', on_delete=models.CASCADE)
     slug = models.SlugField()
 
@@ -86,7 +86,7 @@ class Machine(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
-    content = RichTextUploadingField(verbose_name='Описание')
+    content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
     image = models.ImageField(verbose_name="Главная картинка новости", upload_to='news_image/')
     created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
     slug = models.SlugField()
