@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}  {{ content.title }} {% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-0 font-italic">
+               {{ post.title }}
+              </h1>
+
+
+        {% autoescape off %}
+    {{ content.content }}
+
+
+
+        {% endautoescape %}
+
+
+
+</div>
+{% endblock %}

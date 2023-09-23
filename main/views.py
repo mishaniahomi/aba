@@ -2,11 +2,18 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
 
-from .models import Post, Categories, Albom, Machine
+from .models import Post, Categories, Albom, Machine, PageContent
+
 
 class PostDetailView(DetailView):
     model = Post
     context_object_name = 'post'
+    slug_field = 'slug'
+
+
+class PageContentDetailView(DetailView):
+    model = PageContent
+    context_object_name = 'content'
     slug_field = 'slug'
 
 

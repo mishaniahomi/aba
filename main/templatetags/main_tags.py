@@ -1,7 +1,7 @@
 from django import template
 from itertools import islice
 import math
-from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine
+from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent
 
 register = template.Library()
 
@@ -69,6 +69,7 @@ def get_ourpartners():
         ourpartners = ourpartners[4::]
     return grouped_ourpartners
 
+
 @register.simple_tag()
 def get_news():
     posts = Post.objects.all()
@@ -83,3 +84,9 @@ def get_news():
         grouped_posts.append(group)
         posts = posts[4::]
     return grouped_posts
+
+
+@register.simple_tag()
+def get_contentpagies():
+    objects = PageContent.objects.all()
+    return objects

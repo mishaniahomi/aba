@@ -37,6 +37,11 @@ class PhotoAdmin(admin.ModelAdmin):
     def prewiew(self, obj):
         return mark_safe(f'<img src="{obj.picture.url}" style="max-width: 10%;">')
 
+@admin.register(models.PageContent)
+class CategoriesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',), }
+
 admin.site.register(models.Photo, PhotoAdmin)
 admin.site.register(models.OurPartners)
 admin.site.register(models.banner_akcii)
+admin.site.register(models.ImportantInfo)

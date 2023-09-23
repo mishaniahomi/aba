@@ -186,12 +186,12 @@
 
              <li><a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О компании</a>
                     <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item ptpt"  href="1">О нас</a>
-                        <a class="dropdown-item ptpt" href="2">Сертификаты и дипломы</a>
-                        <a class="dropdown-item ptpt" href="3">Наш буклет</a>
-                        <a class="dropdown-item ptpt"  href="4">Контакты</a>
-                        <a class="dropdown-item ptpt" href="5">VIP-партнёры</a>
-                        <a class="dropdown-item ptpt" href="6">Видео</a>
+                        {% get_contentpagies as contentpagies %}
+                        {% for contentpage in contentpagies %}
+                            <a class="dropdown-item ptpt"  href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a>
+                        {% endfor %}
+
+
                     </div>
              </li>
 

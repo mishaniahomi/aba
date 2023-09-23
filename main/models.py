@@ -114,3 +114,36 @@ class OurPartners(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class PageContent(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
+    created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
+    slug = models.SlugField()
+
+    class Meta:
+        verbose_name = 'Контент страницы'
+        verbose_name_plural = 'Контенты страниц'
+
+    def __str__(self) -> str:
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('pagecontentdetail', kwargs={'slug': self.slug})
+
+
+class ImportantInfo(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
+    created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
+    slug = models.SlugField()
+
+    class Meta:
+        verbose_name = 'Важная информация'
+        verbose_name_plural = 'Важная информация'
+
+    def __str__(self) -> str:
+        return self.title
+
+
