@@ -41,7 +41,11 @@ class PhotoAdmin(admin.ModelAdmin):
 class CategoriesAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
 
+
+@admin.register(models.ImportantInfo)
+class CategoriesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',), }
 admin.site.register(models.Photo, PhotoAdmin)
 admin.site.register(models.OurPartners)
 admin.site.register(models.banner_akcii)
-admin.site.register(models.ImportantInfo)
+

@@ -137,6 +137,7 @@ class ImportantInfo(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
     created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
+    image = models.ImageField(verbose_name="Главная картинка", upload_to='important_info/')
     slug = models.SlugField()
 
     class Meta:

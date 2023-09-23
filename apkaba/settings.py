@@ -77,17 +77,8 @@ WSGI_APPLICATION = 'apkaba.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': 'p306595_735',
-        'USER': 'root',
-        'PASSWORD': '1qaz!QAZ',
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
-}
+from .db_settings import DATABASES_setting
+DATABASES = DATABASES_setting
 
 
 #DATABASES = {

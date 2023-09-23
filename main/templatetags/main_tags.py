@@ -1,7 +1,7 @@
 from django import template
 from itertools import islice
 import math
-from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent
+from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo
 
 register = template.Library()
 
@@ -15,7 +15,7 @@ def get_machine(catgories_id):
     machine = Machine.objects.filter(categories_id=catgories_id)
     group_machine = []
     while True:
-        group = list(islice(machine, 4))
+        group = list(islice(machine, 3))
         if len(group) == 0:
             break
         group_machine.append(group)
@@ -90,3 +90,20 @@ def get_news():
 def get_contentpagies():
     objects = PageContent.objects.all()
     return objects
+
+
+@register.simple_tag()
+def get_important_info():
+    posts = ImportantInfo.objects.all()
+    grouped_posts = []
+    while True:
+        group = list(islice(posts, 4))
+        if len(group) == 0:
+            break
+        grouped_posts.append(group)
+        posts = posts[4::]
+    return grouped_posts
+
+@register.simple_tag()
+def get_child_categories(category_id):
+    return Categories.objects.filter(parent_id=category_id)
