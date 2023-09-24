@@ -2,6 +2,8 @@ from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from django.utils import timezone
+from PIL import Image
+
 
 
 class Albom(models.Model):
@@ -53,7 +55,21 @@ class Categories(models.Model):
     name = models.CharField(max_length=200, verbose_name='Название категории')
     icon = models.ImageField(verbose_name='Иконка категории', upload_to='categoties_icons')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Родительская категория')
+    describe = models.TextField(verbose_name="Краткое описание", null=True, blank=True)
     slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        super().save()  # saving image first
+
+        img = Image.open(self.icon.path)  # Open image using self
+
+        if (img.height != 75 or img.width != 450) and self.parent is not None:
+            new_img = (450, 75)
+            img.thumbnail(new_img)
+            img.save(self.icon.path)
+
+
+
 
     class Meta:
         verbose_name = 'Категория'
@@ -148,3 +164,38 @@ class ImportantInfo(models.Model):
         return self.title
 
 
+class AkciiCategories(models.Model):
+    title = models.CharField(verbose_name='Название категории акции', max_length=100)
+    image = models.ImageField(verbose_name="Главная картинка", upload_to='akcii_category/')
+
+    slug = models.SlugField()
+
+    class Meta:
+        verbose_name = 'Категория акций'
+        verbose_name_plural = 'Категории акций'
+
+    def __str__(self) -> str:
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('akciicategoriesdetail', kwargs={'slug': self.slug})
+
+
+class Akcii(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
+    image = models.ImageField(verbose_name="Главная картинка акции", upload_to='akcii_image/')
+    created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
+    slug = models.SlugField()
+    akciicategories = models.ForeignKey('AkciiCategories', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Акция'
+        verbose_name_plural = 'Акции'
+        ordering = ['-created_at', 'title']
+
+    def __str__(self) -> str:
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('postdetailview', kwargs={'slug': self.slug})

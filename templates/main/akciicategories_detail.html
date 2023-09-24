@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}  {{ object.title }} {% endblock %}
+
+
+{% block content %}
+{% load main_tags %}
+{% get_Akcii category_id=object as akcies %}
+{{ akcies }}
+<div class="container">
+
+</div>
+{% endblock %}

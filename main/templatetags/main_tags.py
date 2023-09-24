@@ -1,7 +1,7 @@
 from django import template
 from itertools import islice
 import math
-from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo
+from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo, AkciiCategories, Akcii
 
 register = template.Library()
 
@@ -107,3 +107,12 @@ def get_important_info():
 @register.simple_tag()
 def get_child_categories(category_id):
     return Categories.objects.filter(parent_id=category_id)
+
+@register.simple_tag()
+def get_AkciiCategories():
+    return AkciiCategories.objects.all()
+
+
+@register.simple_tag()
+def get_Akcii(category_id):
+    return Akcii.objects.filter(akciicategories=category_id)

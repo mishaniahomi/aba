@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
 
-from .models import Post, Categories, Albom, Machine, PageContent
+from .models import Post, Categories, Albom, Machine, PageContent, AkciiCategories, Akcii
 
 
 class PostDetailView(DetailView):
@@ -49,3 +49,9 @@ class AlbomDetail(DetailView):
 
 class MachineDetail(DetailView):
     model = Machine
+
+class AkciiCategoriesDetail(DetailView):
+    model = AkciiCategories
+
+class AkciiDetail(DetailView):
+    model = Akcii

@@ -7,18 +7,19 @@
     <br>
      {% get_machine catgories_id=category as machinies %}
     {% for group in  machinies %}
-    <div class="row">
+    <div class="row mb-3">
         {% for machine in group %}
             <div class="col-md-4">
                 <div class="card">
-                    <a href="{{ machine.get_absolute_url }}" >
+
                     <img src="{{ machine.main_image.url }}" class="img-fluid">
                       <div class="card-caption card-body">
 
-                            {{ machine.name }}
 
+                          <h5 class="card-title">{{ machine.name }}</h5>
+                                <a href="{{ machine.get_absolute_url }}"  class="btn btn-danger">Посмотреть технику</a>
                       </div>
-                    </a>
+
                 </div>
             </div>
         {% endfor %}
@@ -32,20 +33,21 @@
 
     {% get_child_categories category_id=child as child_get_child_categories2 %}
 
-    <div class="row">
+    <div class="row mb-3">
 
 {% for child2 in child_get_child_categories2 %}
-         <div class="col-md-4">
+         <div class="col-md-4 h-25">
 
-                <div class="card">
-                    <a href="{{ child2.get_absolute_url }}" >
+                <div class="card ">
+
                     <img src="{{ child2.icon.url }}" class="img-fluid">
                       <div class="card-caption card-body">
 
-                            {{ child2.name }}
-
+                                        <h5 class="card-title">{{ child2.name }}</h5>
+                <p class="row align-items-left lead">{{child2.describe|safe|linebreaks|truncatechars:350}}</p>
+                          <a href="{{ child2.get_absolute_url }}"  class="btn btn-danger">Посмотреть технику</a>
                       </div>
-                    </a>
+
                 </div>
 
             </div>
@@ -54,18 +56,20 @@
 
     {% get_machine catgories_id=child as machinies %}
     {% for group in  machinies %}
-    <div class="row">
+<br>
+    <div class="row mb-3">
         {% for machine in group %}
             <div class="col-md-4">
                 <div class="card">
-                    <a href="{{ machine.get_absolute_url }}" >
+
                     <img src="{{ machine.main_image.url }}" class="img-fluid">
                       <div class="card-caption card-body">
 
-                            {{ machine.name }}
+                          <h5 class="card-title">{{ machine.name }}</h5>
+                                <a href="{{ machine.get_absolute_url }}"  class="btn btn-danger">Посмотреть технику</a>
 
                       </div>
-                    </a>
+
                 </div>
             </div>
         {% endfor %}

@@ -49,3 +49,10 @@ admin.site.register(models.Photo, PhotoAdmin)
 admin.site.register(models.OurPartners)
 admin.site.register(models.banner_akcii)
 
+@admin.register(models.AkciiCategories)
+class CategoriesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',), }
+
+@admin.register(models.Akcii)
+class CategoriesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',), }
