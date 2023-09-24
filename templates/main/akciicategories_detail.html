@@ -5,8 +5,22 @@
 {% block content %}
 {% load main_tags %}
 {% get_Akcii category_id=object as akcies %}
-{{ akcies }}
-<div class="container">
 
+<div class="container">
+    <td width="690">
+				<h1 class="page-title">Акции</h1>
+		 <div class="row mb-3">
+				{% for akci in akcies %}<br>
+
+												<div class="card" style="width: 18rem;">
+						  <img src="{{ akci.image.url }}" class="card-img-top" alt="...">
+						  <div class="card-body">
+						   		<h5 class="card-title">{{ akci.title }}</h5>
+                                <a href="{{ akci.get_absolute_url }}"  class="btn btn-danger">Посмотреть</a>
+						  </div>
+						</div>
+				{% endfor %}
+			 </div>
+	</td>
 </div>
 {% endblock %}

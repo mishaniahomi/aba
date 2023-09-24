@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import index, PostDetailView, zapchasti, servis, akcii, finansovye_instrumenty, categoryView, AlbomDetail, \
-    MachineDetail, PageContentDetailView, AkciiCategoriesDetail
+    MachineDetail, PageContentDetailView, AkciiCategoriesDetail, AkciiDetail
 
 
 urlpatterns = [
@@ -14,5 +14,6 @@ urlpatterns = [
     path('albom/<slug:slug>', AlbomDetail.as_view(), name='albomDetail'),
     path('category/machine/<slug:slug>', MachineDetail.as_view(), name='machineDetail'),
     path('content/<slug:slug>', PageContentDetailView.as_view(), name='pagecontentdetail'),
-    path('akciicategories/<slug:slug>', AkciiCategoriesDetail.as_view(), name='akciicategoriesdetail')
+    path('akciicategories/<slug:slug>', AkciiCategoriesDetail.as_view(), name='akciicategoriesdetail'),
+    path('akcii/<slug:slug>', AkciiDetail.as_view(), name='akciidetail'),
 ] 

@@ -198,4 +198,4 @@ class Akcii(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('postdetailview', kwargs={'slug': self.slug})
+        return reverse('akciidetail', kwargs={'slug': self.slug})
