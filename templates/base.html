@@ -133,15 +133,12 @@
                     <h4 class="modal-title">Заказать обратный звонок</h4>
                   </div>
                   <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="name">Имя</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Имя">
-                      </div>
-                      <div class="form-group">
-                        <label for="phone">Телефон</label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Телефон">
-                      </div>
+                    {% get_callback_form as form %}
+
+                      <form action="" method="post">
+                        {% csrf_token %}
+                      {{ form.as_p }}
+
                       <div class="form-group mt-3">
                         <button type="submit" class="btn btn-danger">Отправить</button>
                       </div>
@@ -178,17 +175,28 @@
         <ul class="navbar-nav">
              <li class='active'><a href="{% url 'index' %}">Главная</a></li>
              <li><a href="{% url 'index' %}#news_title">Новости</a></li>
-             <li class='has-sub'><a href="#machine" onclick="show_form()">Техника</a></li>
-             <li><a href="{% url 'zapchasti' %}">Запчасти</a></li>
-             <li><a href="{% url 'servis' %}">Сервис и ремонт</a></li>
-             <li><a href="{% url 'akcii' %}">Акции</a></li>
-             <li><a href="{% url 'finansovye_instrumenty' %}">Финансовый инструмент</a></li>
+             <li><a href="#machine" onclick="show_form()">Техника</a></li>
 
+             <li><a href="{% url 'akcii' %}">Акции</a></li>
+            {% get_contentpagies_on_board as contentpagies_on_board %}
+            {% for contentpage in  contentpagies_on_board %}
+                 {% if contentpage.href == null %}
+
+            <li><a href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
+                            {% else %}
+
+             <li><a href="{{ contentpage.href }}" onclick="show_form()">{{ contentpage.title }}</a></li>
+                            {% endif %}
+            {% endfor %}
              <li><a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О компании</a>
                     <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
                         {% get_contentpagies as contentpagies %}
                         {% for contentpage in contentpagies %}
+                            {% if contentpage.href == null %}
                             <a class="dropdown-item ptpt"  href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a>
+                            {% else %}
+                            <a class="dropdown-item ptpt"  href="{{ contentpage.href }}">{{ contentpage.title }}</a>
+                            {% endif %}
                         {% endfor %}
 
 

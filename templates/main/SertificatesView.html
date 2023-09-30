@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Сертификаты и дипломы{% endblock %}
+
+
+{% block content %}
+<br>
+
+<div class="container">
+
+  <!-- Миниатюры -->
+  <div class="row row-cols-1 row-cols-md-6 g-4">
+
+    {% for sert in sertificaties %}
+        <div class="col">
+
+        <div class="">
+
+        <img src="{{ sert.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
+
+
+      </div>
+
+    </div>
+      {% endfor %}
+
+      </div>
+<div class="container">
+    <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for sert in sertificaties %}
+                            {% if forloop.first %}
+                                <div class="carousel-item active" style="text-align: center; background: #000000">
+                            {% else %}
+                                <div class="carousel-item" style="text-align: center; background: #000000">
+                            {% endif %}
+                            <img src="{{ sert.image.url }}" style=" max-height: 90vh; " class=" " alt="{{ photo.picture.name }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Навигация -->
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

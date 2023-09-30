@@ -136,6 +136,8 @@ class PageContent(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
     created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
+    on_main_menu = models.BooleanField(default=False)
+    href = models.CharField(max_length=200, verbose_name="Отдельная ссылка", blank=True, null=True)
     slug = models.SlugField()
 
     class Meta:
@@ -199,3 +201,42 @@ class Akcii(models.Model):
 
     def get_absolute_url(self):
         return reverse('akciidetail', kwargs={'slug': self.slug})
+
+
+class Sertificates(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Название')
+    image = models.ImageField(verbose_name="Изображение", upload_to='sert/')
+
+    class Meta:
+        verbose_name = 'Сертификат (диплом)'
+        verbose_name_plural = 'Сертификаты и дипломы'
+        ordering = ['title']
+
+    def __str__(self) -> str:
+        return self.title
+
+
+class Buklet(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Название')
+    image = models.ImageField(verbose_name="Изображение", upload_to='sert/')
+
+    class Meta:
+        verbose_name = 'Изображение буклета'
+        verbose_name_plural = 'Изображения буклета'
+        ordering = ['title']
+
+    def __str__(self) -> str:
+        return self.title
+
+class Callback(models.Model):
+    name = models.CharField(max_length=200, verbose_name="Обращение к Вам")
+    telephon = models.CharField(max_length=100, verbose_name="Номер Вашего телефона")
+    is_obr = models.BooleanField(verbose_name="Обработан ли?", default=False)
+
+    def __str__(self) -> str:
+        return "{} {}".format(self.name, self.telephon)
+
+    class Meta:
+        verbose_name = 'Обратный звонок'
+        verbose_name_plural = 'Обратные звонки'
+        ordering = ['is_obr']

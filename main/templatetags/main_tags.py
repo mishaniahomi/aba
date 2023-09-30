@@ -2,6 +2,7 @@ from django import template
 from itertools import islice
 import math
 from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo, AkciiCategories, Akcii
+from main.forms import CallBackForm
 
 register = template.Library()
 
@@ -88,7 +89,13 @@ def get_news():
 
 @register.simple_tag()
 def get_contentpagies():
-    objects = PageContent.objects.all()
+    objects = PageContent.objects.filter(on_main_menu=False)
+    return objects
+
+
+@register.simple_tag()
+def get_contentpagies_on_board():
+    objects = PageContent.objects.filter(on_main_menu=True)
     return objects
 
 
@@ -116,3 +123,7 @@ def get_AkciiCategories():
 @register.simple_tag()
 def get_Akcii(category_id):
     return Akcii.objects.filter(akciicategories=category_id)
+
+@register.simple_tag()
+def get_callback_form():
+    return CallBackForm

@@ -1,19 +1,18 @@
 from django.urls import path
-from .views import index, PostDetailView, zapchasti, servis, akcii, finansovye_instrumenty, categoryView, AlbomDetail, \
-    MachineDetail, PageContentDetailView, AkciiCategoriesDetail, AkciiDetail
+from .views import index, PostDetailView, akcii, categoryView, AlbomDetail, \
+    MachineDetail, PageContentDetailView, AkciiCategoriesDetail, AkciiDetail, SertificatesView, BukletView
 
 
 urlpatterns = [
     path('news/<slug:slug>/', PostDetailView.as_view(), name='postdetailview'),
-    path('zapchasti', zapchasti, name='zapchasti'),
-    path('servis', servis, name='servis'),
     path('akciicategories', akcii, name='akcii'),
     path('category/<slug:slug>', categoryView, name='category'),
-    path('finansovye_instrumenty', finansovye_instrumenty, name='finansovye_instrumenty'),
     path('', index, name='index'),
     path('albom/<slug:slug>', AlbomDetail.as_view(), name='albomDetail'),
     path('category/machine/<slug:slug>', MachineDetail.as_view(), name='machineDetail'),
     path('content/<slug:slug>', PageContentDetailView.as_view(), name='pagecontentdetail'),
     path('akciicategories/<slug:slug>', AkciiCategoriesDetail.as_view(), name='akciicategoriesdetail'),
     path('akcii/<slug:slug>', AkciiDetail.as_view(), name='akciidetail'),
+    path('sert', SertificatesView, name='sert'),
+    path('buklet', BukletView, name='buklet'),
 ] 
