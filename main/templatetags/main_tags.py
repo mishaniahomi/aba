@@ -63,11 +63,11 @@ def get_ourpartners():
     ourpartners = OurPartners.objects.all()
     grouped_ourpartners = []
     while True:
-        group = list(islice(ourpartners, 4))
+        group = list(islice(ourpartners, 6))
         if len(group) == 0:
             break
         grouped_ourpartners.append(group)
-        ourpartners = ourpartners[4::]
+        ourpartners = ourpartners[6::]
     return grouped_ourpartners
 
 

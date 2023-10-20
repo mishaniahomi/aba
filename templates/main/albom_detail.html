@@ -14,7 +14,7 @@
 
         <div class="">
 
-        <img src="{{ photo.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
+        <img src="{{ photo.picture.url }}" onclick="activate_photo('img_{{ photo.pk }}')" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
 
 
       </div>
@@ -31,11 +31,11 @@
                     <div class="carousel-inner">
                         {% for photo in photoes %}
                             {% if forloop.first %}
-                                <div class="carousel-item active" style="text-align: center; background: #000000">
+                                <div id="img_{{ photo.pk }}" class="carousel-item big_photo active" style="text-align: center; background: #000000">
                             {% else %}
-                                <div class="carousel-item" style="text-align: center; background: #000000">
+                                <div id="img_{{ photo.pk }}" class="carousel-item big_photo" style="text-align: center; background: #000000">
                             {% endif %}
-                            <img src="{{ photo.picture.url }}" style=" max-height: 90vh; " class=" " alt="{{ photo.picture.name }}">
+                            <img src="{{ photo.picture.url }}" style=" max-height: 90vh; " class=" " alt="{{ photo.describe }}">
                             </div>
                         {% endfor %}
                     </div>

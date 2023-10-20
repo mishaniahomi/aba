@@ -61,14 +61,16 @@
       {% if forloop.first %}
         <div class="carousel-item active">
       {% else %}
-        <div class="carousel-item">
+        <div class=" carousel-item">
       {% endif %}
 
       <div class="row">
         {% for partner in group %}
-            <div class="col">
-                  <img class="img-fluid card-img-top" src="{{ partner.image.url }}"/>
-              </div>
+            <a class="col image-container" href="{{ partner.href }}">
+
+                  <img class="img-fluid card-img-top " src="{{ partner.image.url }}"/>
+
+            </a>
       {% endfor %}
     </div>
     </div>
@@ -92,7 +94,7 @@
   ВАЖНАЯ ИНФОРМАЦИЯ
 </h3>
 <div class="container">
-<div id="important_information" class="carousel slide" data-ride="carousel">
+<div id="important_information" class="carousel slide" data-interval="false" data-ride="carousel">
   <div class="container">
     <div class="carousel-inner">
 
@@ -140,28 +142,7 @@
 </div>
 
 
-<script>
-  // JavaScript функции для управления слайдером
-  function prevSlide(obj) {
-      $(obj).carousel('prev');
-  }
 
-  function nextSlide(obj) {
-      $(obj).carousel('next');
-  }
-   $('#important_information').carousel({
-     $('#important_information').carousel({
-    interval: false
-  });
-    $('#news_title').carousel({
-     $('#news_title').carousel({
-    interval: false
-  });
-    $('#albom').carousel({
-     $('#albom').carousel({
-    interval: false
-  });
-</script>
 
 
 
@@ -170,7 +151,7 @@
 </h3>
 
 <div class="container">
-<div id="news" class="carousel slide" data-ride="carousel">
+<div id="news" class="carousel slide" data-interval="false" data-ride="carousel">
   <div class="container">
     <div class="carousel-inner">
 
@@ -229,11 +210,11 @@
 
 
 
-<h3 class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">ГАЛЕРЕЯ</h3>
+<h3 id="galery_id" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">ГАЛЕРЕЯ</h3>
 
 <div class="container">
 
-    <div id="albom" class="carousel slide" data-ride="carousel">
+    <div id="albom" class="carousel slide" data-interval="false" data-ride="carousel">
         <div class="container">
             <div class="carousel-inner">
 

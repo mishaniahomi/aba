@@ -21,7 +21,21 @@
   </head>
 <body>
 <br>
+
  <style>
+ .image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Создаем эффект увеличения при наведении курсора на изображение */
+.image-container img {
+  transition: transform 0.3s ease; /* Добавляем плавный переход */
+}
+
+.image-container:hover img {
+  transform: scale(1.2); /* Изменяем масштаб изображения при наведении */
+}
     body {
       min-height: 2000px;
     }
@@ -29,7 +43,7 @@
     .btn-up {
       position: fixed;
       background-color: #dc3545;
-      right: 20px;
+      right: 75px;
       bottom: 0px;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
@@ -198,7 +212,7 @@
                             <a class="dropdown-item ptpt"  href="{{ contentpage.href }}">{{ contentpage.title }}</a>
                             {% endif %}
                         {% endfor %}
-
+                            <a class="dropdown-item ptpt"  href="{% url 'index' %}#galery_id">Галерея</a>
 
                     </div>
              </li>
@@ -226,10 +240,10 @@
   {% for categori in categories %}
     <div class="col-4">
 
-      <ul class="list-group">
+      <ul class="list-group ">
         {% for object in categori %}
 
-        <li class="list-group-item"><a class="link-danger" href="{{ object.get_absolute_url }}"><img  src="{{ object.icon.url }}" height="25px">{{ object.name }}</a></li>
+        <li class="list-group-item border-0"><a class="link-danger link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ object.get_absolute_url }}"><img  src="{{ object.icon.url }}" height="25px">{{ object.name }}</a></li>
 
         {% endfor %}
 

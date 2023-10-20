@@ -12,4 +12,21 @@ function show_form() {
     else if(document.getElementById('machine').style.display == '')
     document.getElementById('machine').style.display = 'block';
     }
+ function prevSlide(obj) {
+      $(obj).carousel('prev');
+  }
 
+  function nextSlide(obj) {
+      $(obj).carousel('next');
+  }
+
+
+function activate_photo(id) {
+    console.log(id);
+    element = document.getElementById(id);
+    const elements = document.querySelectorAll('.big_photo');
+    elements.forEach(element => {
+      element.classList.remove('active');
+    });
+    element.classList.add('active');
+}
