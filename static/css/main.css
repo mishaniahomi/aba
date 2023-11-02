@@ -222,10 +222,10 @@ color: #fff;
 }
 
 #title{
-    /* line-height: 48px;  */
+
     font-family: 'Republica Minor';
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .categories {
@@ -249,13 +249,7 @@ color: #fff;
     font-style: italic;
 }
 
-@media screen and (max-width:500px){
-#logo_image {
 
-width: 50%;
-
-
-}}
 
 .dropdown-menu {
 font-family: 'Republica Minor';
@@ -280,4 +274,14 @@ margin-bottom: 10px;
         height: 250px; /* Замените это значение на необходимую высоту */
         object-fit: cover; /* Это свойство обрежет изображение, чтобы оно соответствовало заданным размерам без искажений */
     }
+
+.baner-signature {
+    position: absolute;
+    position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.catalog-icons{
+height: 25px;
+}
 

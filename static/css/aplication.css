@@ -1,0 +1,41 @@
+@media screen and (max-width: 1200px){
+
+}
+@media screen and (max-width: 992px){
+.our-partners{
+    width: 33%;
+}
+.col {
+  flex: none;
+}
+}
+@media screen and (max-width: 770px){
+
+}
+@media screen and (max-width: 480px){
+#logo_image {
+  width: 50%;
+}
+.modal-dialog {
+  width: 80%;
+}
+#title {
+  font-size: 1.3rem;
+}
+.modal.show .modal-dialog {
+  right: 40px;
+}
+.baner-signature {
+font-size: 0.5rem;
+}
+.our-partners{
+    width: 50%;
+}
+
+}
+
+@media screen and (max-width: 400px){
+.modal.show .modal-dialog {
+  right: 35px;
+}
+}

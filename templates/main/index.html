@@ -20,9 +20,9 @@
         <div class="carousel-item" data-bs-interval="5000">
       {% endif %}
 
-              <a href="/#">
+              <a href="{{ banner_akcii.href}}">
                 <img src="{{ banner_akcii.image.url }}" class="d-block w-100">
-                <div class=" d-md-block text-box" style="position: absolute; right: 0; bottom: 0;">
+                <div class="d-md-block text-box baner-signature">
     <h3>{{ banner_akcii.title }}</h3>
     <p>{{ banner_akcii.short_description }}</p>
 </div>
@@ -51,7 +51,7 @@
   </div>
 
   <div class="col-md-12 blog-main">
-<h3 class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">НАШИ ПАРТНЕРЫ</h3>
+<h3 class="pb-3 mb-12  font-italic border-bottom text-center text-shadow ">НАШИ ПАРТНЕРЫ</h3>
 
 
 <div id="gallery" class="carousel slide" data-ride="carousel">
@@ -66,7 +66,7 @@
 
       <div class="row">
         {% for partner in group %}
-            <a class="col image-container" href="{{ partner.href }}">
+            <a class="col image-container our-partners" href="{{ partner.href }}">
 
                   <img class="img-fluid card-img-top " src="{{ partner.image.url }}"/>
 

@@ -17,6 +17,8 @@
 
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
       <link rel="stylesheet" href="{% static 'css/main2.css' %}">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{% static 'css/aplication.css' %}" rel="stylesheet">
     <title>{% block title %} {% endblock %}</title>
   </head>
 <body>
@@ -121,7 +123,7 @@
         <figure >
           <blockquote  class="blockquote">
             <div class=" container d-flex justify-content-center">
-            <h2 id="title" style="font-size: 2rem; ">АПК "АГРО БИЗНЕС АЛЬЯНС"</h2>
+            <h2 id="title">АПК "АГРО БИЗНЕС АЛЬЯНС"</h2>
           </div>
           </blockquote>
           <figcaption class="container d-flex justify-content-center" >
@@ -130,18 +132,18 @@
         </figure>
 
       </div>
-         <div class="col-md-1 ">
-            <a onclick="show_form_search()"> <img class="" src="{% static 'image/icons8-поиск-50.png' %}"  alt="..."  width="50" height="50">
-            </a>
 
-      </div>
 
-      <div class="col-md-3  justify-content-end align-items-center">
-          <h5><b>+7(4862) 72-20-94</b></h5></p>
-          <div>
-            <button type="button" class="btn btn-danger  w-10000" data-toggle="modal" data-target="#myModal"><span class="">Обратный звонок</span></button>
-            <div class="modal fade" id="myModal">
-              <div class="modal-dialog" role="document">
+
+
+
+      <div class="col-md-4  justify-content-end align-items-center">
+
+          <div align="center">
+              <b>+7(4862) 72-20-94</b>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="">Обратный звонок</span></button>
+              <div class="modal fade" id="myModal">
+               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h4 class="modal-title">Заказать обратный звонок</h4>
@@ -164,20 +166,14 @@
                 </div>
               </div>
             </div>
+
           </div>
-      </div>
+        </div>
 
     </div>
   </div>
 
-<div id="search" >
-    <div class=" d-flex justify-content-end align-items-center">
-        <form class="d-flex w-100 p-3">
-          <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search">
-          <button class="btn btn-outline-danger" type="submit">Поиск</button>
-        </form>
-      </div>
-</div>
+
 
 <nav class="navbar navbar-expand-xl navbar-dark" id="cssmenu2" >
 
@@ -220,10 +216,18 @@
              <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/images.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
              <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/icon_odnoklassniki.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
              <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/vk_icon.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
+             <li><a href="{% url 'index' %}#nsearch" onclick="show_form_search()"><img src="{% static '/image/search.png' %}"  alt="Поиск"   height="40px"></a></li>
           </ul>
            <div>
 </nav>
-
+<div id="search" >
+    <div class=" d-flex justify-content-end align-items-center">
+        <form class="d-flex w-100 p-3">
+          <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search">
+          <button class="btn btn-outline-danger" type="submit">Поиск</button>
+        </form>
+      </div>
+</div>
 
 
 <div id="machine">
@@ -243,7 +247,7 @@
       <ul class="list-group ">
         {% for object in categori %}
 
-        <li class="list-group-item border-0"><a class="link-danger link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ object.get_absolute_url }}"><img  src="{{ object.icon.url }}" height="25px">{{ object.name }}</a></li>
+        <li class="list-group-item border-0"><a class="link-danger link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ object.get_absolute_url }}"><img class="catalog-icons"  src="{{ object.icon.url }}" height="25px">{{ object.name }}</a></li>
 
         {% endfor %}
 
@@ -272,36 +276,8 @@
          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
          <small class="d-block mb-3 text-muted">© 2017-2018</small>
        </div>
-       <div class="col-6 col-md">
-         <h5>Features</h5>
-         <ul class="list-unstyled text-small">
-           <li><a class="text-muted" href="#">Cool stuff</a></li>
-           <li><a class="text-muted" href="#">Random feature</a></li>
-           <li><a class="text-muted" href="#">Team feature</a></li>
-           <li><a class="text-muted" href="#">Stuff for developers</a></li>
-           <li><a class="text-muted" href="#">Another one</a></li>
-           <li><a class="text-muted" href="#">Last time</a></li>
-         </ul>
-       </div>
-       <div class="col-6 col-md">
-         <h5>Resources</h5>
-         <ul class="list-unstyled text-small">
-           <li><a class="text-muted" href="#">Resource</a></li>
-           <li><a class="text-muted" href="#">Resource name</a></li>
-           <li><a class="text-muted" href="#">Another resource</a></li>
-           <li><a class="text-muted" href="#">Final resource</a></li>
-         </ul>
-       </div>
-       <div class="col-6 col-md">
-         <h5>Resources</h5>
-         <ul class="list-unstyled text-small">
-           <li><a class="text-muted" href="#">Business</a></li>
-           <li><a class="text-muted" href="#">Education</a></li>
-           <li><a class="text-muted" href="#">Government</a></li>
-           <li><a class="text-muted" href="#">Gaming</a></li>
-         </ul>
-       </div>
-       <div class="col-6 col-md">
+
+       <div class="col-12 col-md">
          <h5>About</h5>
          <ul class="list-unstyled text-small">
            <li><a class="text-muted" href="#">Team</a></li>
@@ -313,4 +289,17 @@
      </div>
    </footer>
   </body>
+<script>
+    addEventListener("load", (event) => {
+  var images = document.getElementsByTagName('img');
+   for(var i = 0; i < images.length; i++) {
+    console.log(images[i]);
+    if(images[i].width=="650px"){
+
+    images[i].style= "";
+    images[i].width="100%";
+    }
+}
+});
+</script>
 </html>

@@ -30,3 +30,5 @@ function activate_photo(id) {
     });
     element.classList.add('active');
 }
+
+
