@@ -1,7 +1,25 @@
-@media screen and (max-width: 1200px){
-
+@media screen and (max-width: 12000px){
+.btn-up {
+      position: fixed;
+      background-color: #dc3545;
+      right: 0px;
+      bottom: 0px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4%;
+      height: 10%;
+    }
 }
 @media screen and (max-width: 992px){
+.btn-up {
+
+      width: 10%;
+      height: 5%;
+    }
 .our-partners{
     width: 33%;
 }
@@ -10,12 +28,20 @@
 }
 }
 @media screen and (max-width: 770px){
-
+#logo_image {
+  width: 25%;
+}
 }
 @media screen and (max-width: 480px){
-#logo_image {
-  width: 50%;
+#machine div .row .col-4  {
+
+    flex: none;
+    width: 100%;
 }
+p img {
+    width: 100%;
+}
+
 .modal-dialog {
   width: 80%;
 }
@@ -23,7 +49,8 @@
   font-size: 1.3rem;
 }
 .modal.show .modal-dialog {
-  right: 40px;
+  right: 7%;
+
 }
 .baner-signature {
 font-size: 0.5rem;
@@ -31,11 +58,17 @@ font-size: 0.5rem;
 .our-partners{
     width: 50%;
 }
+.modal-content {
 
+  left: 10%;
+}
 }
 
 @media screen and (max-width: 400px){
 .modal.show .modal-dialog {
-  right: 35px;
+  right: 16%;
+
 }
+
+
 }
