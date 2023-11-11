@@ -285,9 +285,29 @@ margin-bottom: 10px;
 height: 25px;
 }
 
-.scale {
-    transition: 1s; /* Время эффекта */
-   }
-   .scale:hover {
-    transform: scale(200); /* Увеличиваем масштаб */
-   }
+
+	.box{
+
+
+
+    transition: 1s;
+border-color: #dc3545;
+	}
+	.box:hover{
+		transform: scale(1.5);
+        border-style: solid;
+        border-color: #dc3545;
+		z-index: 2;
+		box-shadow: 2px 2px 2px #000;
+
+	}
+
+.boxcontainer{
+		width: 90%;
+
+		margin: 20px auto;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}

@@ -66,11 +66,11 @@
         <div class=" carousel-item">
       {% endif %}
 
-      <div class="row">
+      <div class="row boxcontainer">
         {% for partner in group %}
-            <a class="col image-container our-partners scale " href="{{ partner.href }}">
+            <a class="col image-container our-partners box" href="{{ partner.href }}">
 
-                  <img class="img-fluid card-img-top " src="{{ partner.image.url }}"/>
+                  <img class="img-fluid card-img-top box" src="{{ partner.image.url }}"/>
 
             </a>
       {% endfor %}
@@ -178,7 +178,7 @@
 </div>
 
 
-                </a>
+
         </div>
       {% endfor %}
     </div>
