@@ -242,8 +242,5 @@ background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69
   transition: transform 0.3s ease; /* Добавляем плавный переход */
 }
 
-.image-container:hover img {
-  transform: scale(1.15); /* Изменяем масштаб изображения при наведении */
-}
 
 

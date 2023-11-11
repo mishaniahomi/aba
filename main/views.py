@@ -61,3 +61,4 @@ def SertificatesView(request):
 def BukletView(request):
     buklets = Buklet.objects.all()
     return render(request, 'main/buklet.html', context={'sertificaties': buklets})
+
