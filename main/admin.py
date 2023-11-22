@@ -19,6 +19,15 @@ class AlbomAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src="{obj.picture.url}" style="max-width: 70%;">')
 
 
+@admin.register(models.OurPartners)
+class OurPartnersAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'prewiew', 'href')
+    list_display_links = ('id', 'name', 'href')
+    search_fields = ('id', 'name',)
+
+    def prewiew(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}" style="max-width: 70%;">')
+
 @admin.register(models.Categories)
 class CategoriesAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',), }
@@ -46,12 +55,7 @@ class CategoriesAdmin(admin.ModelAdmin):
 @admin.register(models.ImportantInfo)
 class CategoriesAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
-admin.site.register(models.Photo, PhotoAdmin)
-admin.site.register(models.OurPartners)
-admin.site.register(models.banner_akcii)
-admin.site.register(models.Buklet)
-admin.site.register(models.Sertificates)
-admin.site.register(models.Callback)
+
 
 @admin.register(models.AkciiCategories)
 class CategoriesAdmin(admin.ModelAdmin):
@@ -61,3 +65,10 @@ class CategoriesAdmin(admin.ModelAdmin):
 @admin.register(models.Akcii)
 class CategoriesAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
+
+
+admin.site.register(models.Photo, PhotoAdmin)
+admin.site.register(models.banner_akcii)
+admin.site.register(models.Buklet)
+admin.site.register(models.Sertificates)
+admin.site.register(models.Callback)
