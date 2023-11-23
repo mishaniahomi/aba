@@ -1,3 +1,5 @@
 /venv
 /media
 apkaba/db_settings.py
+access.log
+error.log
