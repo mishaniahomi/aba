@@ -44,8 +44,9 @@ INSTALLED_APPS = [
     'main',
     'ckeditor',
     'ckeditor_uploader',
-
-
+    'search',
+    'rest_framework',
+    'django_elasticsearch_dsl',
 ]
 
 MIDDLEWARE = [
@@ -172,3 +173,16 @@ CKEDITOR_CONFIGS = {
 }
 
 ###################################
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://172.18.0.3:9200',
+        # 'http_auth': ('username', 'password')
+    },
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 25
+}
