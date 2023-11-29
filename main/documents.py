@@ -9,7 +9,7 @@ from .models import Post
 class PostDocument(Document):
     ps = fields.IntegerField()
     content = fields.TextField()
-
+    picture_url = fields.TextField()
     class Index:
         name = 'posts'
         settings = {
@@ -22,6 +22,7 @@ class PostDocument(Document):
         fields = [
             'title',
             # 'content',
-            'created_at',
-            'slug'
+            # 'created_at',
+            'slug',
+            'image',
         ]

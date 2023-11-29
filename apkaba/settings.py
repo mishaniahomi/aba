@@ -176,7 +176,7 @@ CKEDITOR_CONFIGS = {
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'http://172.18.0.3:9200',
+        'hosts': 'http://es:9200',
         # 'http_auth': ('username', 'password')
     },
 }

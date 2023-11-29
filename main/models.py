@@ -3,7 +3,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from django.utils import timezone
 from PIL import Image
-
+import datetime
 
 
 class Albom(models.Model):
@@ -104,8 +104,13 @@ class Post(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
     image = models.ImageField(verbose_name="Главная картинка новости", upload_to='news_image/')
-    created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
     slug = models.SlugField()
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.image.url
+        super().save()
 
     class Meta:
         verbose_name = 'Новость'

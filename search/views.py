@@ -1,5 +1,5 @@
 import abc
-
+from django.shortcuts import render
 from django.http import HttpResponse
 from elasticsearch_dsl import Q
 from rest_framework.pagination import LimitOffsetPagination
@@ -47,3 +47,12 @@ class SearchPosts(PaginatedElasticSearchAPIView):
                     'content',
                     'slug'
                 ], fuzziness='auto')
+    
+
+def results(request):
+    search_field = request.GET.getlist('search_field')
+    if search_field:
+        query = search_field[0]
+    else:
+        query = ""
+    return render(request, 'search/results.html', context={'query': query}) 

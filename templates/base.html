@@ -8,12 +8,10 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-   <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
    <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-
-
 
 <link rel="shortcut icon" type="image/x-icon" href="{% static 'image/main_logo.png' %}" />
 
@@ -206,15 +204,17 @@
              <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/images.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
              <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/icon_odnoklassniki.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
              <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/vk_icon.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
-             <li><a href="{% url 'index' %}#nsearch" onclick="show_form_search()"><img src="{% static '/image/search.png' %}"  alt="Поиск"   height="40px"></a></li>
+             <li><a href="#nsearch" onclick="show_form_search()"><img src="{% static '/image/search.png' %}"  alt="Поиск"   height="40px"></a></li>
           </ul>
            <div>
 </nav>
 <div id="search" >
     <div class=" d-flex justify-content-end align-items-center">
-        <form class="d-flex w-100 p-3">
-          <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search">
-          <button class="btn btn-outline-danger" type="submit">Поиск</button>
+        <form class="d-flex w-100 p-3"  action="{% url 'search_result' %}">
+         
+          <input class="form-control me-3" type="text" name="search_field" placeholder="Поиск" value="{{ request.GET.search_field }}">
+          <button type="submit" class="btn btn-outline-danger"> Поиск</button>
+        
         </form>
       </div>
 </div>
@@ -283,7 +283,7 @@
     addEventListener("load", (event) => {
   var images = document.getElementsByTagName('img');
    for(var i = 0; i < images.length; i++) {
-    console.log(images[i]);
+    
     if(images[i].width=="650px"){
 
     images[i].style= "";
