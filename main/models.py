@@ -12,6 +12,11 @@ class Albom(models.Model):
     picture = models.ImageField(verbose_name='Обожка', upload_to='albom')
     description = models.TextField(verbose_name='Описание')
     slug = models.SlugField()
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.picture.url
+        super().save()
 
     def __str__(self):
         return self.name
@@ -34,6 +39,12 @@ class Photo(models.Model):
         verbose_name = 'Фотографию'
         verbose_name_plural = 'Фотографии'
         ordering = ['-pk']
+    
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.picture.url
+        super().save()
 
 
 class banner_akcii(models.Model):
@@ -49,6 +60,12 @@ class banner_akcii(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.image.url
+        super().save()
 
 
 class Categories(models.Model):
@@ -57,8 +74,10 @@ class Categories(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Родительская категория')
     describe = models.TextField(verbose_name="Краткое описание", null=True, blank=True)
     slug = models.SlugField()
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
 
     def save(self, *args, **kwargs):
+        self.picture_url = self.icon.url
         super().save()  # saving image first
 
         img = Image.open(self.icon.path)  # Open image using self
@@ -67,10 +86,7 @@ class Categories(models.Model):
             new_img = (450, 75)
             img.thumbnail(new_img)
             img.save(self.icon.path)
-
-
-
-
+    
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
@@ -88,6 +104,11 @@ class Machine(models.Model):
     description = RichTextUploadingField(verbose_name='Описание техники', blank=True, null=True)
     categories_id = models.ForeignKey('Categories', on_delete=models.CASCADE)
     slug = models.SlugField()
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.main_image.url
+        super().save()
 
     class Meta:
         verbose_name = 'Техника'
@@ -144,7 +165,7 @@ class PageContent(models.Model):
     on_main_menu = models.BooleanField(default=False)
     href = models.CharField(max_length=200, verbose_name="Отдельная ссылка", blank=True, null=True)
     slug = models.SlugField()
-
+    
     class Meta:
         verbose_name = 'Контент страницы'
         verbose_name_plural = 'Контенты страниц'
@@ -162,6 +183,11 @@ class ImportantInfo(models.Model):
     created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
     image = models.ImageField(verbose_name="Главная картинка", upload_to='important_info/')
     slug = models.SlugField()
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.image.url
+        super().save()
 
     class Meta:
         verbose_name = 'Важная информация'
@@ -195,6 +221,11 @@ class Akcii(models.Model):
     created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
     slug = models.SlugField()
     akciicategories = models.ForeignKey('AkciiCategories', on_delete=models.CASCADE)
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.image.url
+        super().save()
 
     class Meta:
         verbose_name = 'Акция'

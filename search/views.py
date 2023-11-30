@@ -6,8 +6,8 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.views import APIView
 
 
-from main.documents import PostDocument
-from main.serializers import PostSerializer
+from main.documents import PostDocument, ImportantInfoDocument
+from main.serializers import PostSerializer, ImportantInfoSerializer
 
 
 class PaginatedElasticSearchAPIView(APIView, LimitOffsetPagination):
@@ -33,6 +33,21 @@ class PaginatedElasticSearchAPIView(APIView, LimitOffsetPagination):
         except Exception as e:
             return HttpResponse(e, status=500)
         
+
+class SearchImportantInfoh(PaginatedElasticSearchAPIView):
+    serializer_class = ImportantInfoSerializer
+    document_class = ImportantInfoDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'id',
+                    'title',
+                    'content',
+                    'slug'
+                ], fuzziness='auto')
+    
 
 class SearchPosts(PaginatedElasticSearchAPIView):
     serializer_class = PostSerializer

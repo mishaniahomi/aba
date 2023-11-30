@@ -5,6 +5,7 @@ from django.utils.safestring import mark_safe
 
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
+    exclude = ['picture_url']
     prepopulated_fields = {'slug': ('title',), }
 
 
@@ -34,7 +35,7 @@ class CategoriesAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Machine)
-class CategoriesAdmin(admin.ModelAdmin):
+class MachineAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',), }
 
 
@@ -48,22 +49,22 @@ class PhotoAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.PageContent)
-class CategoriesAdmin(admin.ModelAdmin):
+class PageContentAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
 
 
 @admin.register(models.ImportantInfo)
-class CategoriesAdmin(admin.ModelAdmin):
+class ImportantInfoAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
 
 
 @admin.register(models.AkciiCategories)
-class CategoriesAdmin(admin.ModelAdmin):
+class AkciiCategoriesAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
 
 
 @admin.register(models.Akcii)
-class CategoriesAdmin(admin.ModelAdmin):
+class AkciiAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
 
 

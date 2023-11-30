@@ -34,7 +34,8 @@ function activate_photo(id) {
 
 function get_posts(query){
     if (query){
-        const url = "/search/posts/"+query;
+        // получение от es данных по поиску о новостях
+        let url = "/search/posts/"+query;
         $.get(url, function(data, status){
             console.log(data);
             if(data['results'].length){
@@ -49,11 +50,33 @@ function get_posts(query){
                         p[0].textContent = item['created_at'];
                         let img = clone.querySelectorAll("img");
                         img[0].src = item['picture_url'];
-                        
-                    elem.append(clone);
-                
+                        elem.append(clone);
            });
             }
         });
+        // получение от es данных по поиску о важной информации
+        url = "/search/importantinfo/"+query;
+        $.get(url, function(data, status){
+            console.log(data);
+            if(data['results'].length){
+                let elem = document.getElementById("important_news_search");
+                data['results'].forEach(function(item, index, array){
+                    let clone = tmpl.content.cloneNode(true);
+                        let h5 = clone.querySelectorAll("h5");
+                        h5[0].textContent = item['title'];
+                        let a = clone.querySelectorAll("a");
+                        a[0].href ='/news/'+item['slug'];
+                        let p = clone.querySelectorAll("p");
+                        p[0].textContent = item['created_at'];
+                        let img = clone.querySelectorAll("img");
+                        img[0].src = item['picture_url'];
+                        elem.append(clone);
+           });
+            }
+        });
+        
+
+
+
     }
 }
