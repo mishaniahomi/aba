@@ -34,17 +34,18 @@ class Photo(models.Model):
     picture = models.ImageField(verbose_name='Фотография', upload_to='galery')
     describe = models.TextField(verbose_name='Описание', null=True, blank=True)
     albom_id = models.ForeignKey('Albom', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Альбом')
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.picture.url
+        super().save()
 
     class Meta:
         verbose_name = 'Фотографию'
         verbose_name_plural = 'Фотографии'
         ordering = ['-pk']
     
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
-
-    def save(self, *args, **kwargs):
-        self.picture_url = self.picture.url
-        super().save()
+    
 
 
 class banner_akcii(models.Model):
@@ -53,6 +54,11 @@ class banner_akcii(models.Model):
     short_description = models.TextField(verbose_name='Краткое описание', blank=True, null=True)
     content = RichTextUploadingField(verbose_name='Основной контент', blank=True, null=True)
     href = models.TextField(verbose_name="Ссылка на акцию", blank=True, null=True)
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+
+    def save(self, *args, **kwargs):
+        self.picture_url = self.image.url
+        super().save()
 
     class Meta:
         verbose_name = 'Банер'
@@ -61,11 +67,7 @@ class banner_akcii(models.Model):
     def __str__(self) -> str:
         return self.title
     
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
-
-    def save(self, *args, **kwargs):
-        self.picture_url = self.image.url
-        super().save()
+    
 
 
 class Categories(models.Model):
@@ -200,9 +202,13 @@ class ImportantInfo(models.Model):
 class AkciiCategories(models.Model):
     title = models.CharField(verbose_name='Название категории акции', max_length=100)
     image = models.ImageField(verbose_name="Главная картинка", upload_to='akcii_category/')
-
     slug = models.SlugField()
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
 
+    def save(self, *args, **kwargs):
+        self.picture_url = self.image.url
+        super().save()
+        
     class Meta:
         verbose_name = 'Категория акций'
         verbose_name_plural = 'Категории акций'

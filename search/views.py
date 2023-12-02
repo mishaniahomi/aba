@@ -6,8 +6,8 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.views import APIView
 
 
-from main.documents import PostDocument, ImportantInfoDocument
-from main.serializers import PostSerializer, ImportantInfoSerializer
+from main.documents import PostDocument, ImportantInfoDocument, AkciiCategoriesDocument, Banner_akciiDocument, CategoriesDocument, AkciiDocument, AlbomDocument, MachineDocument, PageContentDocument
+from main.serializers import PostSerializer, ImportantInfoSerializer, AkciiCategoriesSerializer, AkciiSerializer, AlbomSerializer, banner_akciiSerializer, CategoriesSerializer, MachineSerializer, PageContentSerializer
 
 
 class PaginatedElasticSearchAPIView(APIView, LimitOffsetPagination):
@@ -32,7 +32,99 @@ class PaginatedElasticSearchAPIView(APIView, LimitOffsetPagination):
             return self.get_paginated_response(serializer.data)
         except Exception as e:
             return HttpResponse(e, status=500)
-        
+
+
+class SearchPageContent(PaginatedElasticSearchAPIView):
+    serializer_class = PageContentSerializer
+    document_class = PageContentDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'title',
+                    'content',
+                ], fuzziness='auto')
+    
+
+class SearchMachine(PaginatedElasticSearchAPIView):
+    serializer_class = MachineSerializer
+    document_class = MachineDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'name',
+                    'preview_description',
+                    'description',
+                ], fuzziness='auto')
+    
+    
+class SearchAlbom(PaginatedElasticSearchAPIView):
+    serializer_class = AlbomSerializer
+    document_class = AlbomDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'name',
+                    'description',
+                ], fuzziness='auto')
+    
+
+class SearchAkcii(PaginatedElasticSearchAPIView):
+    serializer_class = AkciiSerializer
+    document_class = AkciiDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'title',
+                    'content',
+                ], fuzziness='auto')
+    
+
+class SearchCategories(PaginatedElasticSearchAPIView):
+    serializer_class = CategoriesSerializer
+    document_class = CategoriesDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'name',
+                    'describe',
+                ], fuzziness='auto')
+    
+
+class SearchBannerAakcii(PaginatedElasticSearchAPIView):
+    serializer_class = banner_akciiSerializer
+    document_class = Banner_akciiDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'title',
+                    'short_description',
+                    'content',
+                ], fuzziness='auto')
+    
+
+class SearchAkciiCategories(PaginatedElasticSearchAPIView):
+    serializer_class = AkciiCategoriesSerializer
+    document_class = AkciiCategoriesDocument
+
+    def generate_q_expression(self, query):
+        return Q(
+                    'multi_match', query=query,
+                    fields=[
+                    'title',
+                ], fuzziness='auto')
+    
 
 class SearchImportantInfoh(PaginatedElasticSearchAPIView):
     serializer_class = ImportantInfoSerializer
