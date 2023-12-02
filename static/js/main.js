@@ -37,7 +37,7 @@ function get_posts(query){
         // получение от es данных по поиску о новостях
         let url = "/search/posts/"+query;
         $.get(url, function(data, status){
-            console.log(data);
+          
             if(data['results'].length){
                 let elem = document.getElementById("news_search");
                 data['results'].forEach(function(item, index, array){
@@ -57,9 +57,9 @@ function get_posts(query){
         // получение от es данных по поиску о важной информации
         url = "/search/importantinfo/"+query;
         $.get(url, function(data, status){
-            console.log(data);
+          
             if(data['results'].length){
-                let elem = document.getElementById("important_news_search");
+                let elem = document.getElementById("news_search");
                 data['results'].forEach(function(item, index, array){
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
@@ -74,7 +74,156 @@ function get_posts(query){
            });
             }
         });
+        // получение от es данных по поиску о Техники
+        url = "/search/machine/"+query;
+        $.get(url, function(data, status){
+         
+            if(data['results'].length){
+                let elem = document.getElementById("news_search");
+                data['results'].forEach(function(item, index, array){
+                    let clone = tmpl.content.cloneNode(true);
+                        let h5 = clone.querySelectorAll("h5");
+                        h5[0].textContent = item['name'];
+                        let a = clone.querySelectorAll("a");
+                        a[0].href ='/category/machine/'+item['slug'];
+                        let p = clone.querySelectorAll("p");
+                        p[0].textContent = item['created_at'];
+                        let img = clone.querySelectorAll("img");
+                        img[0].src = item['picture_url'];
+                        elem.append(clone);
+           });
+            }
+        });
+
+        // получение от es данных по поиску о акциях
+        url = "/search/akcii/"+query;
+        $.get(url, function(data, status){
+            
+            if(data['results'].length){
+                let elem = document.getElementById("news_search");
+                data['results'].forEach(function(item, index, array){
+                    let clone = tmpl.content.cloneNode(true);
+                        let h5 = clone.querySelectorAll("h5");
+                        h5[0].textContent = item['title'];
+                        let a = clone.querySelectorAll("a");
+                        a[0].href ='/akcii/'+item['slug'];
+                        let p = clone.querySelectorAll("p");
+                        p[0].textContent = item['created_at'];
+                        let img = clone.querySelectorAll("img");
+                        img[0].src = item['picture_url'];
+                        elem.append(clone);
+           });
+            }
+        });
+        // получение от es данных по поиску о категориях акций
+        url = "/search/akciicategories/"+query;
+        $.get(url, function(data, status){
+            
+            if(data['results'].length){
+                let elem = document.getElementById("news_search");
+                data['results'].forEach(function(item, index, array){
+                    let clone = tmpl.content.cloneNode(true);
+                        let h5 = clone.querySelectorAll("h5");
+                        h5[0].textContent = item['title'];
+                        let a = clone.querySelectorAll("a");
+                        a[0].href ='/akciicategories/'+item['slug'];
+                        let p = clone.querySelectorAll("p");
+                        p[0].textContent = item['created_at'];
+                        let img = clone.querySelectorAll("img");
+                        img[0].src = item['picture_url'];
+                        elem.append(clone);
+           });
+            }
+        });
+
+        // получение от es данных по поиску о альбомах
+        url = "/search/albom/"+query;
+        $.get(url, function(data, status){
+         
+            if(data['results'].length){
+                let elem = document.getElementById("news_search");
+                data['results'].forEach(function(item, index, array){
+                    let clone = tmpl.content.cloneNode(true);
+                        let h5 = clone.querySelectorAll("h5");
+                        h5[0].textContent = item['name'];
+                        let a = clone.querySelectorAll("a");
+                        a[0].href ='/albom/'+item['slug'];
+                        let p = clone.querySelectorAll("p");
+                        p[0].textContent = item['date'];
+                        let img = clone.querySelectorAll("img");
+                        img[0].src = item['picture_url'];
+                        elem.append(clone);
+           });
+            }
+        });
+
+         // получение от es данных по поиску о Баннерах
+         url = "/search/banneraakcii/"+query;
+         $.get(url, function(data, status){
+            
+             if(data['results'].length){
+                 let elem = document.getElementById("news_search");
+                 data['results'].forEach(function(item, index, array){
+                     let clone = tmpl.content.cloneNode(true);
+                         let h5 = clone.querySelectorAll("h5");
+                         h5[0].textContent = item['title'];
+                         let a = clone.querySelectorAll("a");
+                         a[0].href ='/'+item['href'];
+                         let img = clone.querySelectorAll("img");
+                         img[0].src = item['picture_url'];
+                         elem.append(clone);
+            });
+             }
+         });
         
+         // получение от es данных по поиску о Категориях
+         url = "/search/categories/"+query;
+         $.get(url, function(data, status){
+             
+             if(data['results'].length){
+                 let elem = document.getElementById("news_search");
+                 data['results'].forEach(function(item, index, array){
+                     let clone = tmpl.content.cloneNode(true);
+                         let h5 = clone.querySelectorAll("h5");
+                         h5[0].textContent = item['name'];
+                         let a = clone.querySelectorAll("a");
+                         a[0].href ='/category/'+item['slug'];
+                         
+                         let img = clone.querySelectorAll("img");
+                         img[0].src = item['picture_url'];
+                         elem.append(clone);
+            });
+             }
+         });
+        // получение от es данных по поиску о Контенте страниц
+        url = "/search/pagecontent/"+query;
+        $.get(url, function(data, status){
+            
+            if(data['results'].length){
+                let elem = document.getElementById("news_search");
+                data['results'].forEach(function(item, index, array){
+                    let clone = tmpl.content.cloneNode(true);
+                        let h5 = clone.querySelectorAll("h5");
+                        h5[0].textContent = item['title'];
+                        let a = clone.querySelectorAll("a");
+                        if(item['href']){
+                            a[0].href ='/'+item['href'];
+                        }
+                        else{
+                            a[0].href ='/content/'+item['slug'];
+                        }
+                        
+                        
+                        let p = clone.querySelectorAll("p");
+                        p[0].textContent = item['created_at'];
+                        let img = clone.querySelectorAll("img");
+                        img[0].src = item['picture_url'];
+                        elem.append(clone);
+           });
+            }
+        });
+    
+       
 
 
 
