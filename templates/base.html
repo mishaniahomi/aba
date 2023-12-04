@@ -191,12 +191,12 @@
                         {% get_contentpagies as contentpagies %}
                         {% for contentpage in contentpagies %}
                             {% if contentpage.href == null %}
-                            <a class="dropdown-item ptpt"  href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a>
+                            <a class="dropdown-item ptpt"  href="/{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a>
                             {% else %}
-                            <a class="dropdown-item ptpt"  href="{{ contentpage.href }}">{{ contentpage.title }}</a>
+                            <a class="dropdown-item ptpt"  href="/{{ contentpage.href }}">{{ contentpage.title }}</a>
                             {% endif %}
                         {% endfor %}
-                            <a class="dropdown-item ptpt"  href="{% url 'index' %}#galery_id">Галерея</a>
+                            <a class="dropdown-item ptpt"  href="/{% url 'index' %}#galery_id">Галерея</a>
 
                     </div>
              </li>
