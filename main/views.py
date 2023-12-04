@@ -3,12 +3,18 @@ from django.shortcuts import render, redirect
 from django.views.generic import DetailView
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Post, Categories, Albom, Machine, PageContent, AkciiCategories, Akcii, Sertificates, Buklet
+from .models import Post, Categories, Albom, Machine, PageContent, AkciiCategories, Akcii, Sertificates, Buklet, ImportantInfo
 from .forms import CallBackForm
 
 class PostDetailView(DetailView):
     model = Post
     context_object_name = 'post'
+    slug_field = 'slug'
+
+
+class ImportantInfoDetailView(DetailView):
+    model = ImportantInfo
+    context_object_name = 'ImportantInfo'
     slug_field = 'slug'
 
 

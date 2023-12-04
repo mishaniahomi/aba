@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import index, PostDetailView, akcii, categoryView, AlbomDetail, \
-    MachineDetail, PageContentDetailView, AkciiCategoriesDetail, AkciiDetail, SertificatesView, BukletView
+    MachineDetail, PageContentDetailView, AkciiCategoriesDetail, AkciiDetail, SertificatesView, BukletView, ImportantInfoDetailView
 
 
 urlpatterns = [
@@ -15,4 +15,5 @@ urlpatterns = [
     path('akcii/<slug:slug>', AkciiDetail.as_view(), name='akciidetail'),
     path('sert', SertificatesView, name='sert'),
     path('buklet', BukletView, name='buklet'),
+    path('important_info/<slug:slug>', ImportantInfoDetailView.as_view(), name='important_info')
 ] 

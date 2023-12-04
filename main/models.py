@@ -99,6 +99,7 @@ class Categories(models.Model):
     def get_absolute_url(self):
         return reverse('category', kwargs={'slug': self.slug})
 
+
 class Machine(models.Model):
     name = models.CharField(max_length=200, verbose_name='Название техники')
     main_image = models.ImageField(verbose_name='Главное изображение техники', upload_to='machine')
@@ -186,6 +187,10 @@ class ImportantInfo(models.Model):
     image = models.ImageField(verbose_name="Главная картинка", upload_to='important_info/')
     slug = models.SlugField()
     picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
+
+    def get_absolute_url(self):
+        return reverse('important_info', kwargs={'slug': self.slug})
+
 
     def save(self, *args, **kwargs):
         self.picture_url = self.image.url

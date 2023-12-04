@@ -3,11 +3,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from main.sitemap import PostSitemap
+from main.sitemap import PostSitemap, StaticSitemap, AkciiSitemap, AlbomSitemap
 from main.views import yandex
+
+
 sitemaps = {  
-    'posts': PostSitemap,  
+    'static': StaticSitemap,
+    'posts': PostSitemap, 
+    'akcii': AkciiSitemap, 
+    'albom': AlbomSitemap
 }  
+
 
 urlpatterns = [
     path('yandex_0851d15aa1667e58.html', yandex),
