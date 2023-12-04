@@ -95,7 +95,7 @@ class StaticSitemap(Sitemap):
     """
 
     def items(self):
-        return ['index']
+        return ['index', 'akcii', ]
 
     
 
