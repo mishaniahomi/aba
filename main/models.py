@@ -77,7 +77,7 @@ class Categories(models.Model):
     describe = models.TextField(verbose_name="Краткое описание", null=True, blank=True)
     slug = models.SlugField()
     picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
-
+    
     def save(self, *args, **kwargs):
         self.picture_url = self.icon.url
         super().save()  # saving image first
@@ -108,6 +108,7 @@ class Machine(models.Model):
     categories_id = models.ForeignKey('Categories', on_delete=models.CASCADE)
     slug = models.SlugField()
     picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
+
 
     def save(self, *args, **kwargs):
         self.picture_url = self.main_image.url
@@ -224,6 +225,9 @@ class AkciiCategories(models.Model):
     def get_absolute_url(self):
         return reverse('akciicategoriesdetail', kwargs={'slug': self.slug})
 
+    def get_last_date(self):
+        return Akcii.objects.filter(akciicategories=self.id).latest('created_at').created_at
+        
 
 class Akcii(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
@@ -274,6 +278,7 @@ class Buklet(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
 
 class Callback(models.Model):
     name = models.CharField(max_length=200, verbose_name="Обращение к Вам")

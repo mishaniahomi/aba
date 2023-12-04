@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from main.sitemap import PostSitemap, StaticSitemap, AkciiSitemap, AlbomSitemap
+from main.sitemap import PostSitemap, StaticSitemap, AkciiSitemap, AlbomSitemap, AkciiCategoriesSitemap, CategoriesSitemap, ImportantInfoSitemap, MachineSitemap, PageContentSitemap
 from main.views import yandex
 
 
@@ -11,7 +11,12 @@ sitemaps = {
     'static': StaticSitemap,
     'posts': PostSitemap, 
     'akcii': AkciiSitemap, 
-    'albom': AlbomSitemap
+    'albom': AlbomSitemap,
+    'akciicategories': AkciiCategoriesSitemap,
+    'categories': CategoriesSitemap,
+    'importantinfo': ImportantInfoSitemap,
+    'machine': MachineSitemap,
+    'pagecontent': PageContentSitemap,
 }  
 
 
