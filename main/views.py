@@ -62,3 +62,6 @@ def BukletView(request):
     buklets = Buklet.objects.all()
     return render(request, 'main/buklet.html', context={'sertificaties': buklets})
 
+
+def yandex(request):
+    return render(request, 'yandex_0851d15aa1667e58.html')
