@@ -17,19 +17,16 @@
         {% for banner_akcii in banner_akciies  %}
 
         {% if forloop.first %}
-       <div class="carousel-item active" data-bs-interval="5000">
-      {% else %}
+        <div class="carousel-item active" data-bs-interval="5000">
+        {% else %}
         <div class="carousel-item" data-bs-interval="5000">
-      {% endif %}
-
-              <a href="{{ banner_akcii.href}}">
-                <img src="{{ banner_akcii.image.url }}" class="d-block w-100">
-                <div class="d-md-block text-box baner-signature">
-    <h3>{{ banner_akcii.title }}</h3>
-    <p>{{ banner_akcii.short_description }}</p>
-</div>
-              </a>
-            </div>
+        {% endif %}
+          <img src="{{ banner_akcii.image.url }}" class="d-block w-100">
+          <div class="d-md-block text-box baner-signature">
+            <h3>{{ banner_akcii.title }}</h3>
+            <p>{{ banner_akcii.short_description }}</p>
+          </div>
+        </div>
         {% endfor %}
 
 
