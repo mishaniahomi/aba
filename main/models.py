@@ -82,12 +82,12 @@ class Categories(models.Model):
         self.picture_url = self.icon.url
         super().save()  # saving image first
 
-        img = Image.open(self.icon.path)  # Open image using self
+        # img = Image.open(self.icon.path)  # Open image using self
 
-        if (img.height != 75 or img.width != 450) and self.parent is not None:
-            new_img = (450, 75)
-            img.thumbnail(new_img)
-            img.save(self.icon.path)
+        # if (img.height != 75 or img.width != 450) and self.parent is not None:
+        #     new_img = (450, 75)
+        #     img.thumbnail(new_img)
+        #     img.save(self.icon.path)
     
     class Meta:
         verbose_name = 'Категория'
