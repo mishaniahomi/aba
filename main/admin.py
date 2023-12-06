@@ -36,7 +36,7 @@ class CategoriesAdmin(admin.ModelAdmin):
 
 @admin.register(models.Machine)
 class MachineAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',), 'picture_url': ('main_image.url',),}
+    prepopulated_fields = {'slug': ('name',), 'picture_url': ('main_image',),}
 
 
 class PhotoAdmin(admin.ModelAdmin):
