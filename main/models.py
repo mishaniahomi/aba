@@ -166,9 +166,11 @@ class PageContent(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     content = RichTextUploadingField(verbose_name='Описание', blank=True, null=True)
     created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
-    on_main_menu = models.BooleanField(default=False)
+    on_main_menu = models.BooleanField(verbose_name='Отображать в меню?',default=False)
+    on_about_company = models.BooleanField(verbose_name='Отображать в разделе о компании?', default=False)
     href = models.CharField(max_length=200, verbose_name="Отдельная ссылка", blank=True, null=True)
     slug = models.SlugField()
+     
     
     class Meta:
         verbose_name = 'Контент страницы'
@@ -187,7 +189,7 @@ class ImportantInfo(models.Model):
     created_at = models.DateField(default=timezone.now, verbose_name='Дата создания')
     image = models.ImageField(verbose_name="Главная картинка", upload_to='important_info/')
     slug = models.SlugField()
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('important_info', kwargs={'slug': self.slug})
