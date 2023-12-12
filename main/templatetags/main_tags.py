@@ -101,7 +101,7 @@ def get_contentpagies_on_board():
 
 @register.simple_tag()
 def get_important_info():
-    posts = ImportantInfo.objects.all()
+    posts = ImportantInfo.objects.all().order_by('-pk')
     grouped_posts = []
     while True:
         group = list(islice(posts, 4))
