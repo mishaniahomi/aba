@@ -1,7 +1,6 @@
-/venv
+# /venv
 /media
-apkaba/db_settings.py
+# apkaba/db_settings.py
 access.log
 error.log
-test
 db.json
