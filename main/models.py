@@ -140,7 +140,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-        ordering = ['-created_at', 'title']
+        # ordering = ['-created_at', 'title']
 
     def __str__(self) -> str:
         return self.title
@@ -175,6 +175,7 @@ class PageContent(models.Model):
     class Meta:
         verbose_name = 'Контент страницы'
         verbose_name_plural = 'Контенты страниц'
+    
 
     def __str__(self) -> str:
         return self.title
