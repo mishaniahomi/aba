@@ -5,6 +5,9 @@ from django.utils.safestring import mark_safe
 
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'created_at', 'slug')
+    list_display_links = ('id', 'title')
+    search_fields = ('title', 'slug')
     exclude = ['picture_url']
     prepopulated_fields = {'slug': ('title',), }
 
