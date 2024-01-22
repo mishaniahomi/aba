@@ -63,9 +63,17 @@ def get_ourpartners():
     ourpartners = OurPartners.objects.all()
     grouped_ourpartners = []
     while True:
-        group = list(islice(ourpartners, 6))
+        group = list(islice(ourpartners, 6))        
         if len(group) == 0:
             break
+        elif len(group) != 6:
+            for i in range(0, 6-len(group)):
+                # T = OurPartners('white', '/static/image/white_logo.png', '#')
+                T = OurPartners()
+                T.name = 'test'
+                T.image = 'partner_logos/white_logo.png'
+                T.href = '#'
+                group.append(T)
         grouped_ourpartners.append(group)
         ourpartners = ourpartners[6::]
     return grouped_ourpartners
