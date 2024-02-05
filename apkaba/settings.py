@@ -157,6 +157,7 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_CONFIGS = {
     "default": {
+        'config.extraAllowedContent': 'iframe[*];',
         "removePlugins": "stylesheetparser",
         'allowedContent': True,
         'toolbar_Full': [
