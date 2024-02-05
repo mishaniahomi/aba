@@ -220,6 +220,8 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+TEXT_ADDITIONAL_TAGS = ('iframe',)
+TEXT_ADDITIONAL_ATTRIBUTES = ('scrolling', 'allowfullscreen', 'frameborder', 'src', 'height', 'width')
 ###################################
 
 ELASTICSEARCH_DSL = {
