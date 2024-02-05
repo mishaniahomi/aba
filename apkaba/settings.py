@@ -157,21 +157,8 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_CONFIGS = {
     "default": {
-        'extraAllowedContent': '*',
-        "removePlugins": "stylesheetparser",
-        'allowedContent': True,
-        'toolbar_Full': [
-        ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ],
-        ['Image', 'Flash', 'Table', 'HorizontalRule'],
-        ['TextColor', 'BGColor'],
-        ['Smiley','sourcearea', 'SpecialChar'],
-        [ 'Link', 'Unlink', 'Anchor' ],
-        [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ],
-        [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ],
-        [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],
-        [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ],
-        [ 'Maximize', 'ShowBlocks' ]
-    ],
+    
+   
     }
 }
 
