@@ -159,6 +159,10 @@ CKEDITOR_CONFIGS = {
   'default': {
         'skin': 'moono',
         "removePlugins": ["stylesheetparser", "iframe"],
+<<<<<<< HEAD
+=======
+        'extraAllowedContent': 'iframe[*]',
+>>>>>>> 6074e5f979348fda5212be14590dc21f84a0c790
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
