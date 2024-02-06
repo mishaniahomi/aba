@@ -158,7 +158,7 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_CONFIGS = {
   'default': {
         'skin': 'moono',
-        # 'skin': 'office2013',
+        "removePlugins": ["stylesheetparser", "iframe"],
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
@@ -217,6 +217,7 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath'
         ]),
+        'extraAllowedContent': 'iframe[*]',
     }
 }
 

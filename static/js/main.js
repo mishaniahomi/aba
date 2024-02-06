@@ -232,5 +232,10 @@ function get_posts(query){
 
 
 function put_in_sandbox(){
-    
+    console.log('test');
+    var iframe_list = document.getElementsByTagName('iframe');
+    for(var i=0; i<iframe_list.length; i++){
+        iframe_list[i].sandbox = 'allow-same-origin || allow-top-navigation || allow-forms || allow-scripts';
+        console.log(iframe_list[i]);
+    }
 }
