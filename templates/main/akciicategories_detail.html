@@ -7,8 +7,8 @@
 {% get_Akcii category_id=object as akcies %}
 
 <div class="container">
-    <td width="690">
-				<h1 class="page-title">Акции</h1>
+   
+				<h1 class="page-title">Акции "{{ object.title }}"</h1>
 		 <div class="row mb-3">
 				{% for akci in akcies %}<br>
 
@@ -21,6 +21,6 @@
 						</div>
 				{% endfor %}
 			 </div>
-	</td>
+	
 </div>
 {% endblock %}

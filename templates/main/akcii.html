@@ -5,23 +5,27 @@
 {% block content %}
 {% load main_tags %}
 {% get_AkciiCategories as AkciiCategories%}
+
+
 <div class="container">
-    
-				<h1 class="page-title">Акции</h1>	    
-<div class="container px-4 py-5" id="hanging-icons">
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3" id="news_search">
-	{% for i in AkciiCategories %}
-		<div class="col-md-3">
-			<div class="card">
-				<img src="{{ i.image.url }}" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">{{ i.title }}</h5>
-                                	<a href="{{ i.get_absolute_url }}"  class="btn btn-danger">Посмотреть</a>
-				</div>
+   
+	<h1 class="page-title">Акции</h1>
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+	{% for i in AkciiCategories %}<br>
+
+	<div class="col-md-3">
+		<div class="card">
+			<img src="{{ i.image.url }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{ i.title }}</h5>
+								<a href="{{ i.get_absolute_url }}"  class="btn btn-danger">Посмотреть</a>
 			</div>
 		</div>
+	</div>
 	{% endfor %}
-	</div>
-	</div>
+ </div>
+
 </div>
+
+
 {% endblock %}
