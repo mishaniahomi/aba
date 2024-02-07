@@ -16,7 +16,7 @@
     font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;
     font-size: 11px;
   }
-   #cssmenu2 {padding: 0; margin: 0; border: 0; width:100%}
+   #cssmenu2 {padding: 0; margin: 0;width:100%}
   #cssmenu2 ul, #cssmenu2 li {list-style: none; margin: 0; padding: 0;}
   #cssmenu2 ul {position: relative; z-index: 597; }
   #cssmenu2 ul li { float: left; min-height: 1px; vertical-align: middle;}
