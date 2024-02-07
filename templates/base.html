@@ -22,7 +22,7 @@
       <link href="{% static 'css/aplication.css' %}" rel="stylesheet">
     <title>{% block title %} {% endblock %}</title>
   </head>
-<body style="background: rgba(0, 0, 0, 0.05);">
+<body style="background: #EEEDED">
 <br>
 
  <style>
@@ -244,7 +244,7 @@
       <ul class="list-group ">
         {% for object in categori %}
 
-        <li class="list-group-item border-0"><a class="link-danger link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ object.get_absolute_url }}"><img class="catalog-icons"  src="{{ object.icon.url }}" height="25px">{{ object.name }}</a></li>
+        <li class="list-group-item border-0" style="background: #EEEDED"><a class="link-danger link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ object.get_absolute_url }}"><img class="catalog-icons"  src="{{ object.icon.url }}" height="25px">{{ object.name }}</a></li>
 
         {% endfor %}
 
