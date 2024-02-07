@@ -4,36 +4,16 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="mb-0 font-italic">
-               {{ post.title }}
-              </h1>
-
+    
+    <h3  style="font-family: 'Republica Minor';
+    font-weight: bold;
+    font-size: 2rem;">{{ content.title }}</h1>
 
         {% autoescape off %}
-    {{ content.content }}
-
-
-
+        
+            {{ content.content }}
         {% endautoescape %}
-
-
 
 </div>
 
-
-
-<script>console.log('test');
-
-    async function put_in_sandbox(){
-        console.log('test');
-        var iframe_list = document.getElementsByTagName('iframe');
-        for(var i=0; i<iframe_list.length; i++){
-            iframe_list[i].sandbox = 'allow-same-origin || allow-top-navigation || allow-forms || allow-scripts';
-            console.log(iframe_list[i]);
-        }
-    }
-    
-    
-    put_in_sandbox();
-        </script>
 {% endblock %}
