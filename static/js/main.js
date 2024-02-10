@@ -34,13 +34,11 @@ function activate_photo(id) {
 
 function get_posts(query){
     if (query){
-        // получение от es данных по поиску о новостях
         let url = "/search/posts/"+query;
         $.get(url, function(data, status){
-          
-            if(data['results'].length){
+            if(data.length){
                 let elem = document.getElementById("news_search");
-                data['results'].forEach(function(item, index, array){
+                data.forEach(function(item, index, array){
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
                         h5[0].textContent = item['title'];
@@ -57,10 +55,11 @@ function get_posts(query){
         // получение от es данных по поиску о важной информации
         url = "/search/importantinfo/"+query;
         $.get(url, function(data, status){
-          
-            if(data['results'].length){
+
+            if(data.length){
                 let elem = document.getElementById("news_search");
-                data['results'].forEach(function(item, index, array){
+                data.forEach(function(item, index, array){
+//                    console.log(data);
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
                         h5[0].textContent = item['title'];
@@ -78,9 +77,9 @@ function get_posts(query){
         url = "/search/machine/"+query;
         $.get(url, function(data, status){
          
-            if(data['results'].length){
+            if(data.length){
                 let elem = document.getElementById("news_search");
-                data['results'].forEach(function(item, index, array){
+                data.forEach(function(item, index, array){
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
                         h5[0].textContent = item['name'];
@@ -99,9 +98,9 @@ function get_posts(query){
         url = "/search/akcii/"+query;
         $.get(url, function(data, status){
             
-            if(data['results'].length){
+            if(data.length){
                 let elem = document.getElementById("news_search");
-                data['results'].forEach(function(item, index, array){
+                data.forEach(function(item, index, array){
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
                         h5[0].textContent = item['title'];
@@ -119,9 +118,9 @@ function get_posts(query){
         url = "/search/akciicategories/"+query;
         $.get(url, function(data, status){
             
-            if(data['results'].length){
+            if(data.length){
                 let elem = document.getElementById("news_search");
-                data['results'].forEach(function(item, index, array){
+                data.forEach(function(item, index, array){
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
                         h5[0].textContent = item['title'];
@@ -140,9 +139,9 @@ function get_posts(query){
         url = "/search/albom/"+query;
         $.get(url, function(data, status){
          
-            if(data['results'].length){
+            if(data.length){
                 let elem = document.getElementById("news_search");
-                data['results'].forEach(function(item, index, array){
+                data.forEach(function(item, index, array){
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
                         h5[0].textContent = item['name'];
@@ -161,9 +160,9 @@ function get_posts(query){
          url = "/search/banneraakcii/"+query;
          $.get(url, function(data, status){
             
-             if(data['results'].length){
+             if(data.length){
                  let elem = document.getElementById("news_search");
-                 data['results'].forEach(function(item, index, array){
+                 data.forEach(function(item, index, array){
                      let clone = tmpl.content.cloneNode(true);
                          let h5 = clone.querySelectorAll("h5");
                          h5[0].textContent = item['title'];
@@ -180,9 +179,9 @@ function get_posts(query){
          url = "/search/categories/"+query;
          $.get(url, function(data, status){
              
-             if(data['results'].length){
+             if(data.length){
                  let elem = document.getElementById("news_search");
-                 data['results'].forEach(function(item, index, array){
+                 data.forEach(function(item, index, array){
                      let clone = tmpl.content.cloneNode(true);
                          let h5 = clone.querySelectorAll("h5");
                          h5[0].textContent = item['name'];
@@ -199,9 +198,9 @@ function get_posts(query){
         url = "/search/pagecontent/"+query;
         $.get(url, function(data, status){
             
-            if(data['results'].length){
+            if(data.length){
                 let elem = document.getElementById("news_search");
-                data['results'].forEach(function(item, index, array){
+                data.forEach(function(item, index, array){
                     let clone = tmpl.content.cloneNode(true);
                         let h5 = clone.querySelectorAll("h5");
                         h5[0].textContent = item['title'];

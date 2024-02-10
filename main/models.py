@@ -103,7 +103,6 @@ class Categories(models.Model):
 class Machine(models.Model):
     name = models.CharField(max_length=200, verbose_name='Название техники')
     main_image = models.ImageField(verbose_name='Главное изображение техники', upload_to='machine')
-    preview_description = RichTextUploadingField(verbose_name='Краткое описание техники', blank=True, null=True)
     description = RichTextUploadingField(verbose_name='Описание техники', blank=True, null=True)
     categories_id = models.ForeignKey('Categories', on_delete=models.CASCADE)
     slug = models.SlugField()

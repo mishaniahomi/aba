@@ -10,7 +10,6 @@ class AkciiCategoriesSerializer(serializers.ModelSerializer):
 
 
 class PageContentSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format='%d.%m.%Y')
 
     class Meta:
         model = PageContent
@@ -20,7 +19,7 @@ class PageContentSerializer(serializers.ModelSerializer):
 class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
-        fields = ('id', 'name', 'preview_description', 'description', 'slug', 'picture_url')
+        fields = ('id', 'name', 'description', 'slug', 'picture_url')
 
 
 
@@ -38,11 +37,10 @@ class banner_akciiSerializer(serializers.ModelSerializer):
 
 
 class AlbomSerializer(serializers.ModelSerializer):
-    date = serializers.DateTimeField(format='%d.%m.%Y')
 
     class Meta:
         model = Albom
-        fields = ('id', 'date', 'description', 'slug', 'picture_url')
+        fields = ('id', 'description', 'slug', 'picture_url')
 
 
 class AkciiSerializer(serializers.ModelSerializer):
@@ -52,16 +50,14 @@ class AkciiSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format='%d.%m.%Y')
 
     class Meta:
         model = Post
-        fields =  ('id', 'content', 'title', 'slug', 'created_at', 'picture_url')
+        fields =  ('id', 'content', 'title', 'slug', 'picture_url')
 
 
 class ImportantInfoSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format='%d.%m.%Y')
 
     class Meta:
         model = ImportantInfo
-        fields =  ('id', 'content', 'title', 'slug', 'created_at', 'picture_url')
+        fields =  ('id', 'content', 'title', 'slug', 'picture_url')
