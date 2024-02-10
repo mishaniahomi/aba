@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'search',
     'rest_framework',
-    'django_elasticsearch_dsl',
+    # 'django_elasticsearch_dsl',
     'django.contrib.sites', 
     'django.contrib.sitemaps',
 ]
@@ -225,12 +225,12 @@ TEXT_ADDITIONAL_TAGS = ('iframe',)
 TEXT_ADDITIONAL_ATTRIBUTES = ('scrolling', 'allowfullscreen', 'frameborder', 'src', 'height', 'width')
 ###################################
 
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': 'http://es:9200',
-        # 'http_auth': ('username', 'password')
-    },
-}
+# ELASTICSEARCH_DSL = {
+#     'default': {
+#         'hosts': 'http://es:9200',
+#         # 'http_auth': ('username', 'password')
+#     },
+# }
 
 
 REST_FRAMEWORK = {

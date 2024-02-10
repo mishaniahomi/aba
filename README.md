@@ -1,13 +1,14 @@
 # aba
 
-Создать файл apkaba/db_settings.py со следующим содержимым
-DATABASES_setting = {
-    'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': 'p306595_735',
-        'USER': 'root',
-        'PASSWORD': '1qaz!QAZ',
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
-}
+В MySQL выполнить команды<br>
+create database django_db;<br>
+create user 'django_user'@'%' IDENTIFIED BY '12345678';<br>
+GRANT ALL PRIVILEGES ON django_db . * TO 'django_user'@'%';<br>
+
+Из директории проекта в командной строке выполнить<br>
+python manage.py makemigrations<br>
+python manage.py migrate<br>
+
+
+
+
