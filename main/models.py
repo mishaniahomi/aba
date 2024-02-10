@@ -153,6 +153,8 @@ class OurPartners(models.Model):
     name = models.CharField(max_length=200, verbose_name="Имя партнера")
     image = models.ImageField(verbose_name="Изображение партнера", upload_to='partner_logos/')
     href = models.TextField(verbose_name="ссылка на партнера", blank=True, null=True)
+    is_vip = models.BooleanField(verbose_name='VIP', default=False)
+    rating = models.IntegerField(verbose_name="Рейтинг", default=0)
 
     class Meta:
         verbose_name = 'Партнер'
@@ -191,6 +193,7 @@ class ImportantInfo(models.Model):
     image = models.ImageField(verbose_name="Главная картинка", upload_to='important_info/')
     slug = models.SlugField()
     picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True)
+    href = models.CharField(max_length=200, verbose_name="Отдельная ссылка", blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('important_info', kwargs={'slug': self.slug})
@@ -285,8 +288,11 @@ class Buklet(models.Model):
 
 class Callback(models.Model):
     name = models.CharField(max_length=200, verbose_name="Обращение к Вам")
-    telephon = models.CharField(max_length=100, verbose_name="Номер Вашего телефона")
+    telephon = models.CharField(max_length=100, verbose_name="Номер Вашего телефона", blank=True, null=True)
     is_obr = models.BooleanField(verbose_name="Обработан ли?", default=False)
+    email = models.EmailField(verbose_name="Email", blank=True, null=True)
+    message = models.TextField(verbose_name="Текст сообщения", blank=True, null=True)
+    
 
     def __str__(self) -> str:
         return "{} {}".format(self.name, self.telephon)

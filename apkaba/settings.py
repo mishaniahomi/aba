@@ -159,7 +159,7 @@ CKEDITOR_CONFIGS = {
   'default': {
         'skin': 'moono',
         "removePlugins": ["stylesheetparser", "iframe"],
-        'extraAllowedContent': 'iframe[*]',
+        'extraAllowedContent': 'iframe[*], div[*], button[*]',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
@@ -194,7 +194,7 @@ CKEDITOR_CONFIGS = {
             ]},
         ],
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
-        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+        'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
         # 'height': 291,
         # 'width': '100%',
         # 'filebrowserWindowHeight': 725,
@@ -210,7 +210,7 @@ CKEDITOR_CONFIGS = {
             'autoembed',
             'embedsemantic',
             'autogrow',
-            # 'devtools',
+            'devtools',
             'widget',
             'lineutils',
             'clipboard',
