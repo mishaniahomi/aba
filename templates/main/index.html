@@ -83,11 +83,13 @@
         </div>
       </div>
 </div>
+
+{% if ourpartners|length > 1  %}
 <div class="text-center mt-3">
   <button class="btn btn-danger" onclick="prevSlide('#our_partners')"> < </button>
   <button class="btn btn-danger" onclick="nextSlide('#our_partners')"> > </button>
 </div>
-
+{% endif %}
 
 <h3 id="important_information_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">
   ВАЖНАЯ ИНФОРМАЦИЯ

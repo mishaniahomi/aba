@@ -60,7 +60,7 @@ def get_banner_akcii():
 
 @register.simple_tag()
 def get_ourpartners():
-    ourpartners = OurPartners.objects.all()
+    ourpartners = OurPartners.objects.filter(is_vip=True).order_by('-rating')
     grouped_ourpartners = []
     while True:
         group = list(islice(ourpartners, 6))        
@@ -68,7 +68,6 @@ def get_ourpartners():
             break
         elif len(group) != 6:
             for i in range(0, 6-len(group)):
-                # T = OurPartners('white', '/static/image/white_logo.png', '#')
                 T = OurPartners()
                 T.name = 'test'
                 T.image = 'partner_logos/white_logo.png'

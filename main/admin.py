@@ -25,8 +25,8 @@ class AlbomAdmin(admin.ModelAdmin):
 
 @admin.register(models.OurPartners)
 class OurPartnersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'prewiew', 'href')
-    list_display_links = ('id', 'name', 'href')
+    list_display = ('id', 'name', 'prewiew', 'href', 'is_vip', 'rating')
+    list_display_links = ('id', 'name', 'prewiew', 'href', 'is_vip', 'rating')
     search_fields = ('id', 'name',)
 
     def prewiew(self, obj):

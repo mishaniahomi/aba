@@ -24,7 +24,7 @@ class Albom(models.Model):
     class Meta:
         verbose_name = 'Альбом'
         verbose_name_plural = 'Альбомы'
-        ordering = ['date']
+        ordering = ['-date']
 
     def get_absolute_url(self):
         return reverse('albomDetail', kwargs={'slug': self.slug})
