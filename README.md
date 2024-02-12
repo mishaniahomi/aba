@@ -1,4 +1,7 @@
 # aba
+Нужно установить следующие пакеты<br>
+sudo apt install mysql-server mysql-client<br>
+sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3<br>
 
 В MySQL выполнить команды<br>
 create database django_db;<br>
