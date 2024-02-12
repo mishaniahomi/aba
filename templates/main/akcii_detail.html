@@ -3,10 +3,10 @@
 {% load main_tags %}
 
 {% block content %}
-
+<div class="container card" style="margin-top:10px;">
 {% autoescape off %}
 {{ object.content }}
 {% endautoescape %}
 
-
+</div>
 {% endblock %}
