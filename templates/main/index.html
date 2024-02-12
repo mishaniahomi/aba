@@ -116,7 +116,7 @@
                         <img src="{{ post.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">
                                         <p class="card-text">{{ post.created_at }}</p>
-                                        <h5 class="card-title">{{ post.title }}</h5>
+                                        <h5 class="card-title">{{ post.title|safe|truncatechars:50 }}</h5>
 
 <!--                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать-->
                     </div>
@@ -173,7 +173,7 @@
     <img src="{{ post.image.url }}" class="img-fluid  size-image" data-toggle="modal" data-target="#galleryModal">
     <div class="card-caption card-body">
         <p class="card-text">{{ post.created_at }}</p>
-        <h5 class="card-title">{{ post.title }}</h5>
+        <h5 class="card-title">{{ post.title|safe|truncatechars:50 }}</h5>
 <!--        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>-->
 <!--        link-offset-2 link-underline link-underline-opacity-0-->
    </a> </div>
@@ -235,7 +235,7 @@
                                 <div class="card">
                                     <img src="{{ albom.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">
-                                        <h5 class="card-title">{{ albom.name }}</h5>
+                                        <h5 class="card-title">{{ albom.name|safe|truncatechars:50 }}</h5>
                                     </div>
                                 </div>
                               </a>
