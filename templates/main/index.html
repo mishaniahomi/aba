@@ -111,15 +111,16 @@
           <div class="col-md-3">
 
                   <div class="card">
-
+<a href="{{ post.get_absolute_url }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">
 
                         <img src="{{ post.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">
                                         <p class="card-text">{{ post.created_at }}</p>
                                         <h5 class="card-title">{{ post.title }}</h5>
 
-                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
+<!--                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать-->
                     </div>
+                  </a>
                   </div>
 
         </div>
@@ -168,12 +169,14 @@
           <div class="col-md-3">
 
                   <div class="card">
+                      <a href="{{ post.get_absolute_url }}" class=" link-dark link-offset-2 link-underline link-underline-opacity-0">
     <img src="{{ post.image.url }}" class="img-fluid  size-image" data-toggle="modal" data-target="#galleryModal">
     <div class="card-caption card-body">
         <p class="card-text">{{ post.created_at }}</p>
         <h5 class="card-title">{{ post.title }}</h5>
-        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
-    </div>
+<!--        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>-->
+<!--        link-offset-2 link-underline link-underline-opacity-0-->
+   </a> </div>
 </div>
 
 
@@ -228,7 +231,7 @@
                              <div class="row">
                              {% for albom in group %}
                                     <div class="col-md-3">
-                              <a href="{{ albom.get_absolute_url }}">
+                              <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ albom.get_absolute_url }}">
                                 <div class="card">
                                     <img src="{{ albom.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">

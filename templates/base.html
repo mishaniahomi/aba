@@ -150,6 +150,9 @@
                       {{ form.as_p }}
 
                       <div class="form-group mt-3">
+        <div >
+    Нажимая на кнопку, вы даете <a href="{% static 'documents/Согласие на обработку персональных данных.docx' %}" download="Согласие на обработку персональных данных.docx">согласие на обработку персональных данных</a> и соглашаетесь с <a href="{% static 'documents/Политика конфиденциальности.docx' %}" download="Политика конфиденциальности.docx">политикой конфиденциальности</a>.
+</div>
                         <button type="submit" class="btn btn-danger">Отправить</button>
                       </div>
                     </form>
@@ -177,19 +180,19 @@
 
        <div class="collapse navbar-collapse" id="cssmenu">
         <ul class="navbar-nav">
-             <li class='active'><a href="{% url 'index' %}">Главная</a></li>
+             <li {% if request.path == '/' %} class='active' {% endif %}><a href="{% url 'index' %}">Главная</a></li>
              <li><a href="{% url 'index' %}#news_title">Новости</a></li>
              <li><a href="#machine" onclick="show_form()">Техника</a></li>
 
-             <li><a href="{% url 'akcii' %}">Акции</a></li>
+             <li {% if request.path == '/akciicategories' %} class='active' {% endif %} ><a href="{% url 'akcii' %}" >Акции</a></li>
             {% get_contentpagies_on_board as contentpagies_on_board %}
             {% for contentpage in  contentpagies_on_board %}
                  {% if contentpage.href == null %}
 
-            <li><a href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
+            <li {% if request.path == contentpage.get_absolute_url %}class='active'{% endif %} ><a href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
                             {% else %}
 
-             <li><a href="{{ contentpage.href }}" onclick="show_form()">{{ contentpage.title }}</a></li>
+             <li {% if request.path == contentpage.href %}class='active'{% endif %}><a href="{{ contentpage.href }}" onclick="show_form()">{{ contentpage.title }}</a></li>
                             {% endif %}
             {% endfor %}
              <li><a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О компании</a>
@@ -286,7 +289,7 @@
       </div>
 
       <div class="col-12 col-md">
-        <h5><br></h5>
+        <h5>РАЗДЕЛЫ САЙТА</h5>
         <ul class="list-unstyled text-small">
           <li><a class="text-muted" href="#machine" onclick="show_form()">Техника</a></li>
           <li><a class="text-muted" href="{% url 'akcii' %}">Акции</a></li>
@@ -312,15 +315,31 @@
         <h5>О КОМПАНИИ</h5>
         <ul class="list-unstyled text-small">
 
-          {% get_contentpagies as contentpagies %}
-          {% for contentpage in contentpagies %}
-            {% if contentpage.href == null %}
-              <li><a class="text-muted" href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
-            {% else %}
-              <li><a class="text-muted" href="{{ contentpage.href }}">{{ contentpage.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-              <li><a class="text-muted" href="{% url 'index' %}#galery_id">Галерея</a></li>
+
+
+
+              <li><a class="text-muted" href="/content/o-nas">О нас</a></li>
+
+
+
+              <li><a class="text-muted" href="/sert">Сертификаты и дипломы</a></li>
+
+
+
+
+
+
+              <li><a class="text-muted" href="/content/kontakty">Контакты</a></li>
+
+
+
+              <li><a class="text-muted" href="/content/vip-partnyory">VIP-партнёры</a></li>
+
+
+
+              <li><a class="text-muted" href="/content/video">Видео</a></li>
+
+
         </ul>
       </div>
 
