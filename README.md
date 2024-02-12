@@ -11,7 +11,7 @@ GRANT ALL PRIVILEGES ON django_db . * TO 'django_user'@'%';<br>
 Из директории проекта в командной строке выполнить<br>
 python manage.py makemigrations<br>
 python manage.py migrate<br>
-
+apt install python3.10-venv
 
 
 
