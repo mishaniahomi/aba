@@ -39,9 +39,7 @@
 .image-container:hover img {
   transform: scale(1.2); /* Изменяем масштаб изображения при наведении */
 }
-    body {
-      min-height: 2000px;
-    }
+
 
 
 
@@ -263,9 +261,11 @@
 
 
 
-
+<div class="layout">
+<main>
 {% block content %}
 {% endblock %}
+</main>
 
 
 
@@ -345,6 +345,8 @@
 
      </div>
    </footer>
+
+    </div>
   </body>
 <script>
     addEventListener("load", (event) => {

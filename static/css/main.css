@@ -312,3 +312,13 @@ border-color: #dc3545;
 		flex-direction: row;
 		justify-content: center;
 	}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
