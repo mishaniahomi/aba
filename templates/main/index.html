@@ -21,7 +21,7 @@
         {% else %}
         <div class="carousel-item" data-bs-interval="5000">
         {% endif %}
-          <img src="{{ banner_akcii.image.url }}" class="d-block w-100">
+          <a href="{{ banner_akcii.href }}"><img src="{{ banner_akcii.image.url }}" class="d-block w-100"></a>
           <div class="d-md-block text-box baner-signature">
             <h3>{{ banner_akcii.title }}</h3>
             <p>{{ banner_akcii.short_description }}</p>
@@ -113,12 +113,15 @@
                   <div class="card">
 <a href="{{ post.get_absolute_url }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">
 
-                        <img src="{{ post.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
+                        <img  src="{{ post.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">
                                         <p class="card-text">{{ post.created_at }}</p>
-                                        <h5 class="card-title">{{ post.title|safe|truncatechars:50 }}</h5>
+                                        <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+                                            <short> {{ post.title|safe|truncatechars:50 }}</short>
+                                            <full hidden> {{ post.title }} </full>
+                                        </h5>
 
-<!--                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать-->
+<!--                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читат-->
                     </div>
                   </a>
                   </div>
@@ -173,9 +176,11 @@
     <img src="{{ post.image.url }}" class="img-fluid  size-image" data-toggle="modal" data-target="#galleryModal">
     <div class="card-caption card-body">
         <p class="card-text">{{ post.created_at }}</p>
-        <h5 class="card-title">{{ post.title|safe|truncatechars:50 }}</h5>
-<!--        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>-->
-<!--        link-offset-2 link-underline link-underline-opacity-0-->
+        <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+            <short> {{ post.title|safe|truncatechars:50 }}</short>
+            <full hidden> {{ post.title }} </full>
+        </h5>
+
    </a> </div>
 </div>
 
@@ -234,8 +239,11 @@
                               <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ albom.get_absolute_url }}">
                                 <div class="card">
                                     <img src="{{ albom.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
-                                    <div class="card-caption card-body">
-                                        <h5 class="card-title">{{ albom.name|safe|truncatechars:50 }}</h5>
+                                    <div class="card-caption card-body" >
+                                        <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+                                            <short> {{ albom.name|safe|truncatechars:50 }}</short>
+                                            <full hidden> {{ albom.name }} </full>
+</h5>
                                     </div>
                                 </div>
                               </a>

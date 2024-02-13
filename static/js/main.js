@@ -229,3 +229,13 @@ function get_posts(query){
     }
 }
 
+
+function get_full_text(el){
+    el.children[0].hidden = true;
+    el.children[1].hidden = false;
+}
+
+function get_short_text(el){
+    el.children[0].hidden = false;
+    el.children[1].hidden = true;
+}
