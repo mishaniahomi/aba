@@ -117,7 +117,7 @@
                                     <div class="card-caption card-body">
                                         <p class="card-text">{{ post.created_at }}</p>
                                         <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
-                                            <short> {{ post.title|safe|truncatechars:50 }}</short>
+                                            <short> {{ post.title|safe|truncatechars:70 }}</short>
                                             <full hidden> {{ post.title }} </full>
                                         </h5>
 
@@ -177,7 +177,7 @@
     <div class="card-caption card-body">
         <p class="card-text">{{ post.created_at }}</p>
         <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
-            <short> {{ post.title|safe|truncatechars:50 }}</short>
+            <short> {{ post.title|safe|truncatechars:70 }}</short>
             <full hidden> {{ post.title }} </full>
         </h5>
 
@@ -241,7 +241,7 @@
                                     <img src="{{ albom.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body" >
                                         <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
-                                            <short> {{ albom.name|safe|truncatechars:50 }}</short>
+                                            <short> {{ albom.name|safe|truncatechars:70 }}</short>
                                             <full hidden> {{ albom.name }} </full>
 </h5>
                                     </div>
