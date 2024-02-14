@@ -129,7 +129,15 @@ def get_AkciiCategories():
 
 @register.simple_tag()
 def get_Akcii(category_id):
-    return Akcii.objects.filter(akciicategories=category_id)
+    akcii = Akcii.objects.filter(akciicategories=category_id)
+    group_akcii = []
+    while True:
+        group = list(islice(akcii, 3))
+        if len(group) == 0:
+            break
+        group_akcii.append(group)
+        akcii = akcii[3::]
+    return group_akcii
 
 @register.simple_tag()
 def get_callback_form():
