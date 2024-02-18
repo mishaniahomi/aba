@@ -66,13 +66,6 @@ def get_ourpartners():
         group = list(islice(ourpartners, 6))        
         if len(group) == 0:
             break
-        elif len(group) != 6:
-            for i in range(0, 6-len(group)):
-                T = OurPartners()
-                T.name = 'test'
-                T.image = 'partner_logos/white_logo.png'
-                T.href = '#'
-                group.append(T)
         grouped_ourpartners.append(group)
         ourpartners = ourpartners[6::]
     return grouped_ourpartners
