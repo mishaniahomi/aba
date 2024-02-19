@@ -12,7 +12,7 @@
             <div class="col-md-4">
                 <div class="card">
    <a href="{{ machine.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
-                    <img src="{{ machine.main_image.url }}" class="img-fluid">
+                    <img src="{{ machine.main_image.url }}" class="img-fluid" style="width:100%;" >
                       <div class="card-caption card-body">
 
 <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
@@ -43,7 +43,7 @@
 
                 <div class="card ">
  <a href="{{ child2.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
-                    <img src="{{ child2.icon.url }}" class="img-fluid">
+                    <img src="{{ child2.icon.url }}" class="img-fluid" style="width:100%;">
                       <div class="card-caption card-body">
 
 
@@ -75,7 +75,7 @@
             <div class="col-md-4">
                 <div class="card">
 <a href="{{ machine.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
-                    <img src="{{ machine.main_image.url }}" class="img-fluid">
+                    <img src="{{ machine.main_image.url }}" class="img-fluid" style="width:100%;">
                       <div class="card-caption card-body">
 
                           <h5 class="card-title">{{ machine.name }}</h5>
