@@ -22,10 +22,11 @@
         {% else %}
         <div class="carousel-item" data-bs-interval="5000">
         {% endif %}
-          <a href="{{ banner_akcii.href }}"><img src="{{ banner_akcii.image.url }}" class="d-block w-100"></a>
+          <img src="{{ banner_akcii.image.url }}" class="d-block w-100">
           <div class="d-md-block text-box baner-signature">
             <h3>{{ banner_akcii.title }}</h3>
             <p>{{ banner_akcii.short_description }}</p>
+          <a href="{{ banner_akcii.href }}" class="link-light">Посмотреть...</a>
           </div>
         </div>
         {% endfor %}
