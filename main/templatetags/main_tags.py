@@ -1,7 +1,7 @@
 from django import template
 from itertools import islice
 import math
-from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo, AkciiCategories, Akcii
+from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo, AkciiCategories, Akcii, PartnersCategory
 from main.forms import CallBackForm
 
 register = template.Library()
@@ -60,7 +60,7 @@ def get_banner_akcii():
 
 @register.simple_tag()
 def get_ourpartners():
-    ourpartners = OurPartners.objects.filter(is_vip=True).order_by('-rating')
+    ourpartners = OurPartners.objects.filter(is_vip=True).order_by('rating')
     grouped_ourpartners = []
     while True:
         group = list(islice(ourpartners, 6))        
@@ -135,3 +135,13 @@ def get_Akcii(category_id):
 @register.simple_tag()
 def get_callback_form():
     return CallBackForm
+
+
+@register.simple_tag()
+def get_category_of_partners():
+    return PartnersCategory.objects.all()
+
+
+@register.simple_tag()
+def get_partners_by_category(category_parners_id):
+    return OurPartners.objects.filter(category_parners_id=category_parners_id)

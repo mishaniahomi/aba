@@ -74,5 +74,4 @@ def yandex(request):
 
 
 def OurPartnersView(request):
-    ourpartners = OurPartners.objects.all().order_by('-rating')
-    return  render(request, 'main/our_partners.html', context={'ourpartners': ourpartners})
+    return  render(request, 'main/our_partners.html')
