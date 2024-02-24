@@ -312,4 +312,4 @@ class PartnersCategory(models.Model):
     class Meta:
         verbose_name = 'Категория партнёров'
         verbose_name_plural = 'Категории партнёров'
-        ordering = ['name']
+        # ordering = ['name']
