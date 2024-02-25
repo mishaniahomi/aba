@@ -32,6 +32,11 @@
   width: 25%;
 }
 }
+@media screen and (max-width: 770px){
+footer {
+    text-align: center !important;
+}
+}
 @media screen and (max-width: 480px){
 #machine div .row .col-4  {
 

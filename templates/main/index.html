@@ -110,7 +110,7 @@
 
       <div class="row">
         {% for post in group %}
-          <div class="col-md-3">
+          <div class="col-md-3" style="padding: 5px;">
 
                   <div class="card">
 <a href="{{ post.get_absolute_url }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">
@@ -171,7 +171,7 @@
       
       <div class="row">
         {% for post in group %}
-          <div class="col-md-3">
+          <div class="col-md-3" style="padding: 5px;">
 
                   <div class="card">
                       <a href="{{ post.get_absolute_url }}" class=" link-dark link-offset-2 link-underline link-underline-opacity-0">
@@ -237,7 +237,7 @@
                     {% endif %}
                              <div class="row">
                              {% for albom in group %}
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style="padding: 5px;">
                               <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ albom.get_absolute_url }}">
                                 <div class="card">
                                     <img src="{{ albom.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
