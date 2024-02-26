@@ -3,12 +3,13 @@
 {% block title %}
 АГРО БИЗНЕС АЛЬЯНС
 {% endblock %}
+{% block description %}большой ассортимент сельскохозяйственной техники и оборудования отечественного и импортного производства; осуществление предпродажной подготовки, доставки и запуска техники в эксплуатацию; гарантийное и постгарантийное обслуживание как в полевых условиях, так и в собственных мастерских; оперативный выезд сервисных бригад в хозяйства для оказания услуг по ремонту и обслуживанию техники на специально оборудованных автомобилях; постоянно пополняемый склад запасных...{% endblock %}
+
 {% block content %}
 {% get_ourpartners as ourpartners %}
 {% get_news as grouped_posts %}
 {% get_alboms as alboms_groups %}
 {% get_important_info as important_infos %}
-
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
     <div class="carousel-inner">
@@ -25,6 +26,7 @@
           <div class="d-md-block text-box baner-signature">
             <h3>{{ banner_akcii.title }}</h3>
             <p>{{ banner_akcii.short_description }}</p>
+          <a href="{{ banner_akcii.href }}" class="link-light">Посмотреть...</a>
           </div>
         </div>
         {% endfor %}
@@ -50,7 +52,7 @@
   </div>
 
   <div class="col-md-12 blog-main">
-<h3 id="our_partners_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow ">НАШИ ПАРТНЕРЫ</h3>
+<h3 id="our_partners_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow" style="margin-top: revert;">НАШИ VIP-ПАРТНЕРЫ</h3>
 
 
 <div id="our_partners" class="carousel slide" data-ride="carousel">
@@ -63,9 +65,9 @@
         <div class=" carousel-item">
       {% endif %}
 
-      <div class="row boxcontainer">
+      <div class="row boxcontainer row-cols-lg-6">
         {% for partner in group %}
-            <a class="col image-container our-partners box" href="{{ partner.href }}">
+            <a class="col image-container our-partners box" target="_blank"  href="{{ partner.href }}">
 
                   <img class="img-fluid card-img-top box" src="{{ partner.image.url }}"/>
 
@@ -83,13 +85,15 @@
         </div>
       </div>
 </div>
+
+{% if ourpartners|length > 1  %}
 <div class="text-center mt-3">
   <button class="btn btn-danger" onclick="prevSlide('#our_partners')"> < </button>
   <button class="btn btn-danger" onclick="nextSlide('#our_partners')"> > </button>
 </div>
+{% endif %}
 
-
-<h3 id="important_information_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">
+<h3 id="important_information_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow" style="margin-top: revert;">
   ВАЖНАЯ ИНФОРМАЦИЯ
 </h3>
 <div class="container">
@@ -106,18 +110,22 @@
 
       <div class="row">
         {% for post in group %}
-          <div class="col-md-3">
+          <div class="col-md-3" style="padding: 5px;">
 
                   <div class="card">
+<a href="{{ post.get_absolute_url }}" class="link-dark link-offset-2 link-underline link-underline-opacity-0">
 
-
-                        <img src="{{ post.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
+                        <img  src="{{ post.image.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
                                     <div class="card-caption card-body">
                                         <p class="card-text">{{ post.created_at }}</p>
-                                        <h5 class="card-title">{{ post.title }}</h5>
+                                        <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+                                            <short> {{ post.title|safe|truncatechars:70 }}</short>
+                                            <full hidden> {{ post.title }} </full>
+                                        </h5>
 
-                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
+<!--                        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читат-->
                     </div>
+                  </a>
                   </div>
 
         </div>
@@ -145,7 +153,7 @@
 
 
 
-<h3 id="news_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">
+<h3 id="news_title" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow" style="margin-top: revert;">
   НОВОСТИ КОМПАНИИ
 </h3>
 
@@ -163,15 +171,19 @@
       
       <div class="row">
         {% for post in group %}
-          <div class="col-md-3">
+          <div class="col-md-3" style="padding: 5px;">
 
                   <div class="card">
+                      <a href="{{ post.get_absolute_url }}" class=" link-dark link-offset-2 link-underline link-underline-opacity-0">
     <img src="{{ post.image.url }}" class="img-fluid  size-image" data-toggle="modal" data-target="#galleryModal">
     <div class="card-caption card-body">
         <p class="card-text">{{ post.created_at }}</p>
-        <h5 class="card-title">{{ post.title }}</h5>
-        <a href="{{ post.get_absolute_url }}" class="btn btn-danger">Читать</a>
-    </div>
+        <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+            <short> {{ post.title|safe|truncatechars:70 }}</short>
+            <full hidden> {{ post.title }} </full>
+        </h5>
+
+   </a> </div>
 </div>
 
 
@@ -209,7 +221,7 @@
 
 
 
-<h3 id="galery_id" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow">ГАЛЕРЕЯ</h3>
+<h3 id="galery_id" class="pb-3 mb-12  font-italic border-bottom text-center text-shadow" style="margin-top: revert;">ГАЛЕРЕЯ</h3>
 
 <div class="container">
 
@@ -225,12 +237,15 @@
                     {% endif %}
                              <div class="row">
                              {% for albom in group %}
-                                    <div class="col-md-3">
-                              <a href="{{ albom.get_absolute_url }}">
+                                    <div class="col-md-3" style="padding: 5px;">
+                              <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ albom.get_absolute_url }}">
                                 <div class="card">
                                     <img src="{{ albom.picture.url }}" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
-                                    <div class="card-caption card-body">
-                                        <h5 class="card-title">{{ albom.name }}</h5>
+                                    <div class="card-caption card-body" >
+                                        <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+                                            <short> {{ albom.name|safe|truncatechars:70 }}</short>
+                                            <full hidden> {{ albom.name }} </full>
+</h5>
                                     </div>
                                 </div>
                               </a>

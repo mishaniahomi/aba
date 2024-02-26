@@ -3,6 +3,13 @@ from . import models
 from django.utils.safestring import mark_safe
 
 
+@admin.register(models.PartnersCategory)
+class PartnersCategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    list_display_links = ('id', 'name')
+    search_fields = ('name',)
+
+
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'created_at', 'slug')
@@ -25,8 +32,8 @@ class AlbomAdmin(admin.ModelAdmin):
 
 @admin.register(models.OurPartners)
 class OurPartnersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'prewiew', 'href')
-    list_display_links = ('id', 'name', 'href')
+    list_display = ('id', 'name', 'prewiew',  'is_vip', 'rating', 'category_parners_id')
+    list_display_links = ('id', 'name', 'prewiew',  'is_vip', 'rating', 'category_parners_id')
     search_fields = ('id', 'name',)
 
     def prewiew(self, obj):

@@ -24,7 +24,7 @@ class Albom(models.Model):
     class Meta:
         verbose_name = 'Альбом'
         verbose_name_plural = 'Альбомы'
-        ordering = ['date']
+        ordering = ['-date']
 
     def get_absolute_url(self):
         return reverse('albomDetail', kwargs={'slug': self.slug})
@@ -103,7 +103,6 @@ class Categories(models.Model):
 class Machine(models.Model):
     name = models.CharField(max_length=200, verbose_name='Название техники')
     main_image = models.ImageField(verbose_name='Главное изображение техники', upload_to='machine')
-    preview_description = RichTextUploadingField(verbose_name='Краткое описание техники', blank=True, null=True)
     description = RichTextUploadingField(verbose_name='Описание техники', blank=True, null=True)
     categories_id = models.ForeignKey('Categories', on_delete=models.CASCADE)
     slug = models.SlugField()
@@ -155,6 +154,7 @@ class OurPartners(models.Model):
     href = models.TextField(verbose_name="ссылка на партнера", blank=True, null=True)
     is_vip = models.BooleanField(verbose_name='VIP', default=False)
     rating = models.IntegerField(verbose_name="Рейтинг", default=0)
+    category_parners_id = models.ForeignKey('PartnersCategory', on_delete=models.SET_NULL, verbose_name="Категория партнёра", blank=True, null=True)
 
     class Meta:
         verbose_name = 'Партнер'
@@ -301,3 +301,15 @@ class Callback(models.Model):
         verbose_name = 'Обратный звонок'
         verbose_name_plural = 'Обратные звонки'
         ordering = ['is_obr']
+
+
+class PartnersCategory(models.Model):
+    name = models.CharField(max_length=252, verbose_name="Название категории партнёров")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Категория партнёров'
+        verbose_name_plural = 'Категории партнёров'
+        ordering = ['pk']

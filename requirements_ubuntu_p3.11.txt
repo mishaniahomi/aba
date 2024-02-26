@@ -9,9 +9,6 @@ django-colorfield==0.10.1
 django-elasticsearch-dsl==8.0
 django-js-asset==2.1.0
 djangorestframework==3.14.0
-elastic-transport==8.10.0
-elasticsearch==8.11.0
-elasticsearch-dsl==8.11.0
 Pillow==10.0.1
 pycparser==2.21
 PyMySQL==1.1.0

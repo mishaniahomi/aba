@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import DetailView
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Post, Categories, Albom, Machine, PageContent, AkciiCategories, Akcii, Sertificates, Buklet, ImportantInfo
+from .models import OurPartners, Post, Categories, Albom, Machine, PageContent, AkciiCategories, Akcii, Sertificates, Buklet, ImportantInfo
 from .forms import CallBackForm
 
 class PostDetailView(DetailView):
@@ -71,3 +71,7 @@ def BukletView(request):
 
 def yandex(request):
     return render(request, 'yandex_0851d15aa1667e58.html')
+
+
+def OurPartnersView(request):
+    return  render(request, 'main/our_partners.html')

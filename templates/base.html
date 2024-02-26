@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
+<meta name="description" property="og:description" content="{% block description %}{% endblock %}">
+<meta name="keywords" content="тракторы, орел, кировец, орловская облаять">
    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
    <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 
-<link rel="shortcut icon" type="image/x-icon" href="{% static 'image/main_logo.png' %}" />
+<link rel="icon" type="image/x-icon" href="{% static 'image/main_logo.ico' %}" />
 
 
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -39,9 +40,7 @@
 .image-container:hover img {
   transform: scale(1.2); /* Изменяем масштаб изображения при наведении */
 }
-    body {
-      min-height: 2000px;
-    }
+
 
 
 
@@ -135,25 +134,31 @@
               +7(4862) 72-20-94
             </a>
               <!-- <b>+7(4862) 72-20-94</b> -->
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="">Обратный звонок</span></button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="">Задать вопрос</span></button>
               <div class="modal fade" id="myModal">
                <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Заказать обратный звонок</h4>
+                    <h4 class="modal-title">Задать вопрос</h4>
                   </div>
                   <div class="modal-body">
                     {% get_callback_form as form %}
 
-                      <form action="" method="post">
+                      <form align="left" action="" method="post">
                         {% csrf_token %}
+                          <div align="left">
                       {{ form.as_p }}
+                            </div>
 
                       <div class="form-group mt-3">
+        <div >
+    Нажимая на кнопку, вы даете <a href="{% static 'documents/Согласие на обработку персональных данных.docx' %}" download="Согласие на обработку персональных данных.docx">согласие на обработку персональных данных</a> и соглашаетесь с <a href="{% static 'documents/Политика конфиденциальности.docx' %}" download="Политика конфиденциальности.docx">политикой конфиденциальности</a>.
+</div>
                         <button type="submit" class="btn btn-danger">Отправить</button>
                       </div>
                     </form>
                   </div>
+                 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                   </div>
@@ -176,20 +181,20 @@
       </button>
 
        <div class="collapse navbar-collapse" id="cssmenu">
-        <ul class="navbar-nav">
-             <li class='active'><a href="{% url 'index' %}">Главная</a></li>
+        <ul class="navbar-nav" style="margin-left: auto;margin-right: auto;">
+             <li {% if request.path == '/' %} class='active' {% endif %}><a href="{% url 'index' %}">Главная</a></li>
              <li><a href="{% url 'index' %}#news_title">Новости</a></li>
              <li><a href="#machine" onclick="show_form()">Техника</a></li>
 
-             <li><a href="{% url 'akcii' %}">Акции</a></li>
+             <li {% if request.path == '/akciicategories' %} class='active' {% endif %} ><a href="{% url 'akcii' %}" >Акции</a></li>
             {% get_contentpagies_on_board as contentpagies_on_board %}
             {% for contentpage in  contentpagies_on_board %}
                  {% if contentpage.href == null %}
 
-            <li><a href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
+            <li {% if request.path == contentpage.get_absolute_url %}class='active'{% endif %} ><a href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
                             {% else %}
 
-             <li><a href="{{ contentpage.href }}" onclick="show_form()">{{ contentpage.title }}</a></li>
+             <li {% if request.path == contentpage.href %}class='active'{% endif %}><a href="{{ contentpage.href }}" onclick="show_form()">{{ contentpage.title }}</a></li>
                             {% endif %}
             {% endfor %}
              <li><a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О компании</a>
@@ -204,14 +209,15 @@
                             {% endif %}
                           {% endif %}
                         {% endfor %}
+                        <a class="dropdown-item ptpt"  href="{% url 'ourpartners' %}#galery_id">Наши партнёры</a>
                             <a class="dropdown-item ptpt"  href="{% url 'index' %}#galery_id">Галерея</a>
                     </div>
              </li>
 
-             <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/images.png' %}" alt="Ссылка на группу в одноклассниках" height="25px"></a></li>
-             <li><a href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/icon_odnoklassniki.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
-             <li><a href="https://vk.com/id409208555"><img  src="{% static '/image/vk_icon.png' %}" alt="Ссылка на группу в вконтакте" height="25px"></a></li>
-             <li><a href="#nsearch" onclick="show_form_search()"><img src="{% static '/image/search.png' %}"  alt="Поиск"   height="40px"></a></li>
+             <li><a target="_blank" href="https://www.youtube.com/@kirovetsPTZ"><img  src="{% static '/image/images.png' %}" alt="Ссылка на группу в одноклассниках" height="25px"></a></li>
+             <li><a target="_blank" href="https://ok.ru/profile/592112186830"><img  src="{% static '/image/icon_odnoklassniki.png' %}" alt="Ссылка на канал в youtube" height="25px"></a></li>
+             <li><a target="_blank" href="https://vk.com/id409208555"><img  src="{% static '/image/vk_icon.png' %}" alt="Ссылка на группу в вконтакте" height="25px"></a></li>
+             <li><a target="_blank" href="#nsearch" onclick="show_form_search()"><img src="{% static '/image/search.png' %}"  alt="Поиск"   height="40px"></a></li>
           </ul>
            <div>
 </nav>
@@ -260,72 +266,100 @@
 
 
 
-
+<div class="layout">
+<main>
 {% block content %}
 {% endblock %}
+</main>
 
 
+</div>
+<footer class=" " width="100%" style=" height: 75px; background: #fff;; margin-top: 30px;">
+</footer>
+   <footer class=" py-5 wrapper" width="100%" style="background: #f6f6f6;">
+     <div class="container">
+         <div class="row">
+       <div class="col-md-3">
+        <img class="" src="{% static 'image/main_logo.png' %}"    height="100">
 
-
-   <footer class="container py-5 wrapper">
-     <div class="row">
-       <div class="col-12 col-md">
-        <img id="logo_image" class="" src="{% static 'image/main_logo.png' %}"    width="50%" height="50%">
-       
-         <small class="d-block mb-3 text-muted">© 2017-2018</small>
+         <small class="d-block mb-3 text-muted">© 2015-2024</small>
        </div>
 
-      <div class="col-12 col-md">
+      <div class="col-md-3">
         <h5>ГЛАВНАЯ</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="{% url 'index' %}#our_partners_title">Наши партнёры</a></li>
-          <li><a class="text-muted" href="{% url 'index' %}#important_information_title">Важная информация</a></li>
-          <li><a class="text-muted" href="{% url 'index' %}#news_title">Новости компании</a></li>
-          <li><a class="text-muted" href="{% url 'index' %}#galery_id">Галерея</a></li>
+          <li><a class="link-body-emphasis" href="{% url 'index' %}#our_partners_title">Наши VIP-партнёры</a></li>
+          <li><a class="link-body-emphasis" href="{% url 'index' %}#important_information_title">Важная информация</a></li>
+          <li><a class="link-body-emphasis" href="{% url 'index' %}#news_title">Новости компании</a></li>
+          <li><a class="link-body-emphasis" href="{% url 'index' %}#galery_id">Галерея</a></li>
         </ul>
       </div>
 
-      <div class="col-12 col-md">
-        <h5><br></h5>
+      <div class="col-md-3">
+        <h5>РАЗДЕЛЫ САЙТА</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="#machine" onclick="show_form()">Техника</a></li>
-          <li><a class="text-muted" href="{% url 'akcii' %}">Акции</a></li>
+          <li><a class="link-body-emphasis" href="#machine" onclick="show_form()">Техника</a></li>
+          <li><a class="link-body-emphasis" href="{% url 'akcii' %}">Акции</a></li>
           {% get_contentpagies_on_board as contentpagies_on_board %}
       {% for contentpage in  contentpagies_on_board %}
            {% if contentpage.href == null %}
 
-      <li><a class="text-muted" href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
+      <li><a class="link-body-emphasis" href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
                       {% else %}
 
-       <li><a class="text-muted" href="{{ contentpage.href }}" >{{ contentpage.title }}</a></li>
+       <li><a class="link-body-emphasis" href="{{ contentpage.href }}" >{{ contentpage.title }}</a></li>
                       {% endif %}
       {% endfor %}
         </ul>
       </div>
 
-
-
-
-
-
-      <div class="col-12 col-md">
+      <div class="col-md-3">
         <h5>О КОМПАНИИ</h5>
         <ul class="list-unstyled text-small">
-
-          {% get_contentpagies as contentpagies %}
-          {% for contentpage in contentpagies %}
-            {% if contentpage.href == null %}
-              <li><a class="text-muted" href="{{ contentpage.get_absolute_url }}">{{ contentpage.title }}</a></li>
-            {% else %}
-              <li><a class="text-muted" href="{{ contentpage.href }}">{{ contentpage.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-              <li><a class="text-muted" href="{% url 'index' %}#galery_id">Галерея</a></li>
+              <li><a class="link-body-emphasis" href="/content/o-nas">О нас</a></li>
+              <li><a class="link-body-emphasis" href="/sert">Сертификаты и дипломы</a></li>
+              <li><a class="link-body-emphasis" href="/content/kontakty">Контакты</a></li>
+              <li><a class="link-body-emphasis" href="/content/vip-partnyory">Наши партнёры</a></li>
+              <li><a class="link-body-emphasis" href="/content/video">Видео</a></li>
         </ul>
       </div>
-
+</div>
      </div>
+
    </footer>
+<footer class=" py-2"  width="100%" style="background: #ececec;">
+<div class="container" >
+<div class="row align-items-center">
+          <div class="col-12 col-md">
+              ООО «Аграрная Промышленная Компания «АГРО БИЗНЕС АЛЬЯНС»
+          </div>
+          <div class="col-12 col-md">
+
+              <a href="tel:тел.: +7(4862) 72-20-94" class="link-body-emphasis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </svg>
+              +7(4862) 72-20-94
+            </a>
+          </div>
+          <div class="col-12 col-md">
+
+              <a target="_blank" class="link-body-emphasis" href="https://yandex.ru/map-widget/v1/?scroll=false&source=constructor-api&um=constructor%3AXGjPwVMVzouTf8cAmwD2fQfLsaMUf6Yg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"></path>
+                      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path>
+                    </svg>
+                    302014, г. Орел, ул. Спивака, д. 74,
+                  </a>
+
+          </div>
+
+          <div class="col-12 col-md" >
+                <img class="" src="{% static 'image/QR-code.jpg' %}"    width="75px" height="75px">
+          </div>
+      </div>
+     </div>
+</footer>
   </body>
 <script>
     addEventListener("load", (event) => {

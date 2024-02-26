@@ -103,7 +103,7 @@
         right: 99.5%;
 }
 
-.wrapper{margin:10vh}
+
 
 
 .card{
@@ -247,6 +247,7 @@ color: #fff;
 #slogan {
     font-family: 'Republica Minor';
     font-style: italic;
+	font-size: 2rem;
 }
 
 
@@ -311,3 +312,12 @@ border-color: #dc3545;
 		flex-direction: row;
 		justify-content: center;
 	}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}

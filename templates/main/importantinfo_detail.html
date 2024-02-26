@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}  {{ ImportantInfo.title }} {% endblock %}
-
+{% block description %}{{ ImportantInfo.title }}{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container card" style="margin-top:10px;">
     <h1 class="mb-0 font-italic">
                {{ ImportantInfo.title }}
     </h1>

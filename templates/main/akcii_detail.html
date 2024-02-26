@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}  {{ object.title }} {% endblock %}
 {% load main_tags %}
-
+{% block description %}{% endblock %}
 {% block content %}
-
+<div class="container card" style="margin-top:10px;">
 {% autoescape off %}
 {{ object.content }}
 {% endautoescape %}
 
-
+</div>
 {% endblock %}

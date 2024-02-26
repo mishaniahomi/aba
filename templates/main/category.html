@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}  {{ category.name }} {% endblock %}
 {% load main_tags %}
-
+{% block description %}{% endblock %}
 {% block content %}
 <div class="container">
     <br>
@@ -11,15 +11,18 @@
         {% for machine in group %}
             <div class="col-md-4">
                 <div class="card">
-
-                    <img src="{{ machine.main_image.url }}" class="img-fluid">
+   <a href="{{ machine.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
+                    <img src="{{ machine.main_image.url }}" class="img-fluid" style="width:100%;" >
                       <div class="card-caption card-body">
 
+<h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+            <short> {{ machine.name|safe|truncatechars:70 }}</short>
+            <full hidden> {{ machine.name }} </full>
+        </h5>
 
-                          <h5 class="card-title">{{ machine.name }}</h5>
-                                <a href="{{ machine.get_absolute_url }}"  class="btn btn-danger">Посмотреть технику</a>
+
                       </div>
-
+</a>
                 </div>
             </div>
         {% endfor %}
@@ -39,15 +42,25 @@
          <div class="col-md-4 h-25">
 
                 <div class="card ">
-
-                    <img src="{{ child2.icon.url }}" class="img-fluid">
+ <a href="{{ child2.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
+                    <img src="{{ child2.icon.url }}" class="img-fluid" style="width:100%;">
                       <div class="card-caption card-body">
 
-                                        <h5 class="card-title">{{ child2.name }}</h5>
-                <p class="row align-items-left lead">{{child2.describe|safe|linebreaks|truncatechars:350}}</p>
-                          <a href="{{ child2.get_absolute_url }}"  class="btn btn-danger">Посмотреть технику</a>
-                      </div>
 
+
+                           <h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+            <short> {{ child2.name|safe|truncatechars:70 }}</short>
+            <full hidden> {{ child2.name }} </full>
+        </h5>
+                <p class="row align-items-left lead" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+                      <short> {{child2.describe|safe|truncatechars:60 }}</short>
+            <full hidden> {{ child2.describe }} </full>
+
+
+                    </p>
+
+                      </div>
+</a>
                 </div>
 
             </div>
@@ -61,15 +74,15 @@
         {% for machine in group %}
             <div class="col-md-4">
                 <div class="card">
-
-                    <img src="{{ machine.main_image.url }}" class="img-fluid">
+<a href="{{ machine.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
+                    <img src="{{ machine.main_image.url }}" class="img-fluid" style="width:100%;">
                       <div class="card-caption card-body">
 
                           <h5 class="card-title">{{ machine.name }}</h5>
-                                <a href="{{ machine.get_absolute_url }}"  class="btn btn-danger">Посмотреть технику</a>
+                               </a>
 
                       </div>
-
+ </a>
                 </div>
             </div>
         {% endfor %}

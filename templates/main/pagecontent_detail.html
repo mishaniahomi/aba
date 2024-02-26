@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}  {{ content.title }} {% endblock %}
-
+{% block description %}{{ content.title }}{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container card" style="margin-top:10px; margin-bottom:10px;">
     
     <h3  style="font-family: 'Republica Minor';
     font-weight: bold;
     font-size: 2rem;">{{ content.title }}</h1>
 
         {% autoescape off %}
-        
+
             {{ content.content }}
         {% endautoescape %}
 

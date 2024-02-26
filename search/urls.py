@@ -1,6 +1,5 @@
 from django.urls import path
-
-from .views import SearchPosts, results, SearchImportantInfoh, SearchAkcii, SearchAkciiCategories, SearchAlbom, SearchBannerAakcii, SearchCategories, SearchMachine, SearchPageContent
+from .views import  results, SearchPosts, SearchImportantInfoh, SearchAkciiCategories, SearchAkcii, SearchMachine, SearchAlbom, SearchBannerAakcii, SearchCategories, SearchPageContent
 
 
 urlpatterns = [
