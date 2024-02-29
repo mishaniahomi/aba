@@ -82,4 +82,5 @@ admin.site.register(models.Photo, PhotoAdmin)
 admin.site.register(models.banner_akcii)
 admin.site.register(models.Buklet)
 admin.site.register(models.Sertificates)
+
 admin.site.register(models.Callback)
