@@ -27,4 +27,4 @@ urlpatterns = [
     path("ckeditor/", include('ckeditor_uploader.urls')),
     path('search/', include('search.urls')),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap",),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.MEDIA_URL_1, document_root=settings.MEDIA_ROOT_1)
