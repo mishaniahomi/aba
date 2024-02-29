@@ -32,7 +32,7 @@
   width: 25%;
 }
 }
-@media screen and (max-width: 770px){
+@media screen and (max-width: 750px){
 footer {
     text-align: center !important;
 }
