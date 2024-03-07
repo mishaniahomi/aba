@@ -12,12 +12,12 @@
     {% for photo in photoes %}
         <div class="col">
 
-        <div class="">
+
 
         <img src="{{ photo.picture.url }}" onclick="activate_photo('img_{{ photo.pk }}')" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
 
 
-      </div>
+
 
     </div>
       {% endfor %}
@@ -41,12 +41,12 @@
                     </div>
                     <!-- Навигация -->
                     <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only"></span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true">&nbsp;</span>
+                        <span class="sr-only">&nbsp;</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only"></span>
+                        <span class="carousel-control-next-icon" aria-hidden="true">&nbsp;</span>
+                        <span class="sr-only">&nbsp;</span>
                     </a>
                 </div>
             </div>
