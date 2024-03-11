@@ -267,7 +267,7 @@ class Sertificates(models.Model):
     class Meta:
         verbose_name = 'Сертификат (диплом)'
         verbose_name_plural = 'Сертификаты и дипломы'
-        ordering = ['title']
+        ordering = ['-pk']
 
     def __str__(self) -> str:
         return self.title
