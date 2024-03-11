@@ -63,6 +63,7 @@ class banner_akcii(models.Model):
     class Meta:
         verbose_name = 'Банер'
         verbose_name_plural = 'Банеры'
+        ordering = ['-pk']
 
     def __str__(self) -> str:
         return self.title
