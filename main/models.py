@@ -2,7 +2,6 @@ from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from django.utils import timezone
-from PIL import Image
 import datetime
 
 
@@ -140,7 +139,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-        ordering = ['-pk']
+        ordering = ['-created_at', '-pk']
 
     def __str__(self) -> str:
         return self.title
