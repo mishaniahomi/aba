@@ -10,29 +10,25 @@
 <div class="container">
    
 	<h1 class="page-title">Акции</h1>
-<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-	{% for i in AkciiCategories %}<br>
+	<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+		{% for i in AkciiCategories %}<br>
 
-	<div class="col-md-3">
-		<div class="card">
-			<a href="{{ i.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
-			<img src="{{ i.image.url }}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
-            <short> {{ i.title|safe|truncatechars:70 }}</short>
-            <full hidden> {{ i.title }} </full>
-        </h5>
-							</a>
+		<div class="col-md-3">
+			<div class="card">
+				<a href="{{ i.get_absolute_url }}"  class="link-dark link-offset-2 link-underline link-underline-opacity-0">
+					<img src="{{ i.image.url }}" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title" onmouseover="get_full_text(this)" onmouseout="get_short_text(this)">
+							<short> {{ i.title|safe|truncatechars:70 }}</short>
+							<full hidden> {{ i.title }} </full>
+						</h5>
+					</div>
+				</a>
+
 			</div>
 		</div>
+		{% endfor %}
 	</div>
-	{% endfor %}
-
-
-
-
- </div>
-
 </div>
 
 

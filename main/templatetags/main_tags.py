@@ -1,7 +1,7 @@
 from django import template
 from itertools import islice
 import math
-from main.models import OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo, AkciiCategories, Akcii, PartnersCategory
+from main.models import Albom_Machine, Albom_Post, Albom_important_info, Albom_Content, Albom_Akcii, OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo, AkciiCategories, Akcii, PartnersCategory
 from main.forms import CallBackForm
 
 register = template.Library()
@@ -26,7 +26,7 @@ def get_machine(catgories_id):
 
 @register.simple_tag()
 def get_alboms():
-    alboms = Albom.objects.all()
+    alboms = Albom.objects.filter(visible=True)
     grouped_alboms = []
     while True:
         group = list(islice(alboms, 4))
@@ -145,3 +145,28 @@ def get_category_of_partners():
 @register.simple_tag()
 def get_partners_by_category(category_parners_id):
     return OurPartners.objects.filter(category_parners_id=category_parners_id)
+
+
+@register.simple_tag()
+def get_albom_of_akcii(akcii_id):
+    return Albom_Akcii.objects.filter(Akcii_id=akcii_id)
+
+
+@register.simple_tag()
+def get_albom_of_important_info(important_info_id):
+    return Albom_important_info.objects.filter(important_info=important_info_id)
+
+
+@register.simple_tag()
+def get_albom_of_content(pagecontent_id):
+    return Albom_Content.objects.filter(pagecontent_id=pagecontent_id)
+
+
+@register.simple_tag()
+def get_albom_of_post(post_id):
+    return Albom_Post.objects.filter(post_id=post_id)
+
+
+@register.simple_tag()
+def get_albom_of_machine(machine_id):
+    return Albom_Machine.objects.filter(machine_id=machine_id)

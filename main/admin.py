@@ -84,3 +84,8 @@ admin.site.register(models.Buklet)
 admin.site.register(models.Sertificates)
 
 admin.site.register(models.Callback)
+admin.site.register(models.Albom_Content)
+admin.site.register(models.Albom_important_info)
+admin.site.register(models.Albom_Akcii)
+admin.site.register(models.Albom_Post)
+admin.site.register(models.Albom_Machine)

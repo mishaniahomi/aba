@@ -11,7 +11,8 @@ class Albom(models.Model):
     picture = models.ImageField(verbose_name='Обожка', upload_to='albom')
     description = models.TextField(verbose_name='Описание')
     slug = models.SlugField()
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True)
+    visible = models.BooleanField(verbose_name='Видно ли в галереи', default=True)
 
     def save(self, *args, **kwargs):
         self.picture_url = self.picture.url
@@ -316,3 +317,63 @@ class PartnersCategory(models.Model):
         verbose_name = 'Категория партнёров'
         verbose_name_plural = 'Категории партнёров'
         ordering = ['-created_at', '-pk']
+
+
+class Albom_important_info(models.Model):
+    albom_id = models.ForeignKey('Albom', on_delete=models.CASCADE, verbose_name='Альбом')
+    important_info = models.ForeignKey('ImportantInfo', on_delete=models.CASCADE, verbose_name='Важная информация')
+
+    def __str__(self):
+        return "{} - {}".format(self.albom_id, self.important_info)
+
+    class Meta:
+        verbose_name = 'Связи альбомов и важной информации'
+        verbose_name_plural = 'Связь альбома и важной информации'
+
+
+class Albom_Akcii(models.Model):
+    albom_id = models.ForeignKey('Albom', on_delete=models.CASCADE, verbose_name='Альбом')
+    Akcii_id = models.ForeignKey('Akcii', on_delete=models.CASCADE, verbose_name='Акция', unique=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.albom_id, self.Akcii_id)
+
+    class Meta:
+        verbose_name = 'Связи альбомов и акций'
+        verbose_name_plural = 'Связь альбома и акции'
+
+
+class Albom_Content(models.Model):
+    albom_id = models.ForeignKey('Albom', on_delete=models.CASCADE, verbose_name='Альбом')
+    pagecontent_id = models.ForeignKey('PageContent', on_delete=models.CASCADE, verbose_name='Контент страницы', unique=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.albom_id, self.pagecontent_id)
+
+    class Meta:
+        verbose_name = 'Связи альбомов и контентов страниц'
+        verbose_name_plural = 'Связь альбома и контента страницы'
+
+
+class Albom_Post(models.Model):
+    albom_id = models.ForeignKey('Albom', on_delete=models.CASCADE, verbose_name='Альбом')
+    post_id = models.ForeignKey('Post', on_delete=models.CASCADE, verbose_name='Новость', unique=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.albom_id, self.post_id)
+
+    class Meta:
+        verbose_name = 'Связи альбомов и нововстей'
+        verbose_name_plural = 'Связь альбома и новости'
+
+
+class Albom_Machine(models.Model):
+    albom_id = models.ForeignKey('Albom', on_delete=models.CASCADE, verbose_name='Альбом')
+    machine_id = models.ForeignKey('Machine', on_delete=models.CASCADE, verbose_name='Новость', unique=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.albom_id, self.machine_id)
+
+    class Meta:
+        verbose_name = 'Связи альбомов и техники'
+        verbose_name_plural = 'Связь альбома и техники'

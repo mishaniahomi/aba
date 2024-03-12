@@ -11,18 +11,11 @@
   {% get_photoes albom_id=object.id as photoes %}
     {% for photo in photoes %}
         <div class="col">
+            <img src="{{ photo.picture.url }}" onclick="activate_photo('img_{{ photo.pk }}')" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
+        </div>
+    {% endfor %}
 
-
-
-        <img src="{{ photo.picture.url }}" onclick="activate_photo('img_{{ photo.pk }}')" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
-
-
-
-
-    </div>
-      {% endfor %}
-
-      </div>
+  </div>
 <div class="container">
     <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -53,4 +46,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
