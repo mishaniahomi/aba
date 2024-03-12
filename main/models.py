@@ -43,8 +43,6 @@ class Photo(models.Model):
         verbose_name = 'Фотографию'
         verbose_name_plural = 'Фотографии'
         ordering = ['-pk']
-    
-    
 
 
 class banner_akcii(models.Model):
@@ -53,7 +51,8 @@ class banner_akcii(models.Model):
     short_description = models.TextField(verbose_name='Краткое описание', blank=True, null=True)
     content = RichTextUploadingField(verbose_name='Основной контент', blank=True, null=True)
     href = models.TextField(verbose_name="Ссылка на акцию", blank=True, null=True)
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True)
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
 
     def save(self, *args, **kwargs):
         self.picture_url = self.image.url
@@ -62,7 +61,7 @@ class banner_akcii(models.Model):
     class Meta:
         verbose_name = 'Банер'
         verbose_name_plural = 'Банеры'
-        ordering = ['-pk']
+        ordering = ['-created_at', '-pk']
 
     def __str__(self) -> str:
         return self.title
@@ -76,22 +75,17 @@ class Categories(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Родительская категория')
     describe = models.TextField(verbose_name="Краткое описание", null=True, blank=True)
     slug = models.SlugField()
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True) 
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение пути', blank=True, null=True)
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
     
     def save(self, *args, **kwargs):
         self.picture_url = self.icon.url
         super().save()  # saving image first
-
-        # img = Image.open(self.icon.path)  # Open image using self
-
-        # if (img.height != 75 or img.width != 450) and self.parent is not None:
-        #     new_img = (450, 75)
-        #     img.thumbnail(new_img)
-        #     img.save(self.icon.path)
     
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+        ordering = ['-created_at', '-pk']
 
     def __str__(self) -> str:
         return self.name
@@ -106,8 +100,8 @@ class Machine(models.Model):
     description = RichTextUploadingField(verbose_name='Описание техники', blank=True, null=True)
     categories_id = models.ForeignKey('Categories', on_delete=models.CASCADE)
     slug = models.SlugField()
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
-
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True)
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
 
     def save(self, *args, **kwargs):
         self.picture_url = self.main_image.url
@@ -116,6 +110,7 @@ class Machine(models.Model):
     class Meta:
         verbose_name = 'Техника'
         verbose_name_plural = 'Техники'
+        ordering = ['-created_at', '-pk']
 
     def __str__(self) -> str:
         return self.name
@@ -159,6 +154,7 @@ class OurPartners(models.Model):
     class Meta:
         verbose_name = 'Партнер'
         verbose_name_plural = 'Партнеры'
+        ordering = ['rating', '-pk']
 
     def __str__(self) -> str:
         return self.name
@@ -177,6 +173,7 @@ class PageContent(models.Model):
     class Meta:
         verbose_name = 'Контент страницы'
         verbose_name_plural = 'Контенты страниц'
+        ordering = ['-created_at', '-pk']
     
 
     def __str__(self) -> str:
@@ -206,7 +203,7 @@ class ImportantInfo(models.Model):
     class Meta:
         verbose_name = 'Важная информация'
         verbose_name_plural = 'Важная информация'
-
+        ordering = ['-created_at', '-pk']
     def __str__(self) -> str:
         return self.title
 
@@ -215,7 +212,8 @@ class AkciiCategories(models.Model):
     title = models.CharField(verbose_name='Название категории акции', max_length=100)
     image = models.ImageField(verbose_name="Главная картинка", upload_to='akcii_category/')
     slug = models.SlugField()
-    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True) 
+    picture_url = models.CharField(max_length=200, verbose_name='Расположение главного изображения', blank=True, null=True)
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
 
     def save(self, *args, **kwargs):
         self.picture_url = self.image.url
@@ -224,6 +222,7 @@ class AkciiCategories(models.Model):
     class Meta:
         verbose_name = 'Категория акций'
         verbose_name_plural = 'Категории акций'
+        ordering = ['-created_at']
 
     def __str__(self) -> str:
         return self.title
@@ -263,11 +262,12 @@ class Akcii(models.Model):
 class Sertificates(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
     image = models.ImageField(verbose_name="Изображение", upload_to='sert/')
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
 
     class Meta:
         verbose_name = 'Сертификат (диплом)'
         verbose_name_plural = 'Сертификаты и дипломы'
-        ordering = ['-pk']
+        ordering = ['-created_at', '-pk']
 
     def __str__(self) -> str:
         return self.title
@@ -276,11 +276,12 @@ class Sertificates(models.Model):
 class Buklet(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
     image = models.ImageField(verbose_name="Изображение", upload_to='sert/')
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
 
     class Meta:
         verbose_name = 'Изображение буклета'
         verbose_name_plural = 'Изображения буклета'
-        ordering = ['title']
+        ordering = ['-created_at', 'title']
 
     def __str__(self) -> str:
         return self.title
@@ -292,6 +293,7 @@ class Callback(models.Model):
     is_obr = models.BooleanField(verbose_name="Обработан ли?", default=False)
     email = models.EmailField(verbose_name="Email", blank=True, null=True)
     message = models.TextField(verbose_name="Текст сообщения", blank=True, null=True)
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
     
 
     def __str__(self) -> str:
@@ -300,11 +302,12 @@ class Callback(models.Model):
     class Meta:
         verbose_name = 'Обратный звонок'
         verbose_name_plural = 'Обратные звонки'
-        ordering = ['is_obr']
+        ordering = ['created_at', 'is_obr']
 
 
 class PartnersCategory(models.Model):
     name = models.CharField(max_length=252, verbose_name="Название категории партнёров")
+    created_at = models.DateField(default=datetime.date.today, verbose_name='Дата создания')
 
     def __str__(self):
         return self.name
@@ -312,4 +315,4 @@ class PartnersCategory(models.Model):
     class Meta:
         verbose_name = 'Категория партнёров'
         verbose_name_plural = 'Категории партнёров'
-        ordering = ['pk']
+        ordering = ['-created_at', '-pk']
