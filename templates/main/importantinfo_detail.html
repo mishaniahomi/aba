@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}  {{ ImportantInfo.title }} {% endblock %}
 {% block description %}{{ ImportantInfo.title }}{% endblock %}
+{% load main_tags %}
 
 {% block content %}
 <div class="container card" style="margin-top:10px;">
@@ -11,5 +12,53 @@
         {% autoescape off %}
             {{ ImportantInfo.content }}
         {% endautoescape %}
+
+{% get_albom_of_important_info important_info_id=object.pk as ids_alboms  %}
+{% for id_albom in ids_alboms %}
+<div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          {% get_photoes albom_id=id_albom.albom_id as photoes %}
+            {% for photo in photoes %}
+                <div class="col">
+                    <img src="{{ photo.picture.url }}" onclick="activate_photo('img_{{ photo.pk }}')" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+</div>
+
+<div class="container">
+    <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for photo in photoes %}
+                            {% if forloop.first %}
+                                <div id="img_{{ photo.pk }}" class="carousel-item big_photo active" style="text-align: center; background: #000000">
+                            {% else %}
+                                <div id="img_{{ photo.pk }}" class="carousel-item big_photo" style="text-align: center; background: #000000">
+                            {% endif %}
+                            <img src="{{ photo.picture.url }}" style=" max-height: 90vh; " class=" " alt="{{ photo.describe }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Навигация -->
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true">&nbsp;</span>
+                        <span class="sr-only">&nbsp;</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true">&nbsp;</span>
+                        <span class="sr-only">&nbsp;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
 </div>
 {% endblock %}
