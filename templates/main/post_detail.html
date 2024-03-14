@@ -39,9 +39,11 @@
                                 <div id="img_{{ photo.pk }}" class="carousel-item big_photo" style="text-align: center; background: #000000">
                             {% endif %}
                             <img src="{{ photo.picture.url }}" style=" max-height: 90vh; " class=" " alt="{{ photo.describe }}">
-                                    <div class="carousel-caption d-none d-md-block">
+                                     {% if photo.describe %}
+                                <div class=" text-box ">
                                         <p>{{ photo.describe }}</p>
-                                    </div>
+                                </div>
+                                    {% endif %}
                             </div>
                         {% endfor %}
                     </div>
