@@ -21,7 +21,7 @@
           {% get_photoes albom_id=id_albom.albom_id as photoes %}
             {% for photo in photoes %}
                 <div class="col">
-                    <img src="{{ photo.picture.url }}" onclick="activate_photo('img_{{ photo.pk }}')" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
+                    <img src="{{ photo.picture.url }}" onclick="activate_photo('img_{{ photo.pk }}')" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
                 </div>
             {% endfor %}
         </div>
