@@ -1,6 +1,8 @@
 from django import template
 from itertools import islice
 import math
+import datetime
+
 from main.models import Albom_Machine, Albom_Post, Albom_important_info, Albom_Content, Albom_Akcii, OurPartners, Post, banner_akcii, Categories, Photo, Albom, Machine, PageContent, ImportantInfo, AkciiCategories, Akcii, PartnersCategory
 from main.forms import CallBackForm
 
@@ -73,7 +75,7 @@ def get_ourpartners():
 
 @register.simple_tag()
 def get_news():
-    posts = Post.objects.all()
+    posts = Post.objects.filter(created_at__lte=datetime.date.today())
     grouped_posts = []
     while True:
         # Возьмите 4 объекта из оставшихся объектов

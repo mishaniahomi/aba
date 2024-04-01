@@ -13,12 +13,11 @@
     {% for sert in sertificaties %}
         <div class="col">
 
-        <div class="">
-
-        <img src="{{ sert.image.url }}" onclick="activate_photo('img_{{ sert.pk }}')" class="img-fluid size-image" data-toggle="modal" data-target="#galleryModal">
 
 
-      </div>
+        <img src="{{ sert.image.url }}" onclick="activate_photo('img_{{ sert.pk }}')" class="img-fluid" data-toggle="modal" data-target="#galleryModal">
+
+
 
     </div>
       {% endfor %}
